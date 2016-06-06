@@ -1,0 +1,32 @@
+[
+  {
+    "outputFileName": "Content/materialize/materialize.css",
+    "inputFiles": [
+      "Content/materialize/materialize.css"
+    ]
+  },
+  {
+    "outputFileName": "Content/css/libs/materialize/style.css",
+    "inputFiles": [
+      "Content/css/libs/materialize/style.css"
+    ]
+  },
+  {
+    "outputFileName": "Scripts/libs/materialize/plugins/plugins.js",
+    "inputFiles": [
+      "Scripts/libs/materialize/plugins/plugins.js"
+    ]
+  },
+  {
+    "outputFileName": "Content/css/libs/knockout/knockout.js",
+    "inputFiles": [
+      "Content/css/libs/knockout/knockout.js"
+    ]
+  },
+  {
+    "outputFileName": "Content/css/libs/knockout/knockout.mapping.js",
+    "inputFiles": [
+      "Content/css/libs/knockout/knockout.mapping.js"
+    ]
+  }
+]

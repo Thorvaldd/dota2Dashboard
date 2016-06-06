@@ -1,0 +1,8 @@
+﻿#heroestable >tbody {
+    overflow-y: scroll;
+
+    height: 300px;
+
+}
+
+/*thead, tbody, tr, td, th { display: block; }*/

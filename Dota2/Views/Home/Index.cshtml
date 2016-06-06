@@ -1,0 +1,28 @@
+﻿@using Dota2.Extensions
+@model List<WebApiRepository.ViewModels.HeroesViewModel>
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<table class="mdl-data-table mdl-js-data-table mdl-data-table--selectable mdl-shadow--2dp" id="heroestable">
+    <thead>
+        <tr>
+            <th class="mdl-data-table__cell--non-numeric">Id</th>
+            <th>Hero name</th>
+            <th>Valve name</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var hero in Model)
+            {
+            <tr>
+                <td>@hero.Id</td>
+                <td>@hero.Name</td>
+                <td>@hero.ValveName</td>
+                <td>@Html.Image(hero.HeroImage)</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
