@@ -1,0 +1,23 @@
+﻿<table class="bordered highlight">
+    <thead>
+    <tr>
+        <th data-field="id">Id</th>
+        <th data-field="name">Name</th>
+        <th data-field="name">Valve name</th>
+        <th data-field="image"></th>
+    </tr>
+    </thead>
+
+    <tbody data-bind="foreach:HeroesModel">
+    <tr>
+        <td data-bind="text:Id"></td>
+        <td data-bind="text:Name"></td>
+        <td data-bind="text:ValveName"></td>
+        <td>
+            <img data-bind="attr: {src: CloudinaryUrl}"/>
+        </td>
+
+    </tr>
+    </tbody>
+</table>
+

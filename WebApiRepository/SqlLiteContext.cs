@@ -20,5 +20,7 @@ namespace WebApiRepository
                 .HasRequired(s => s.HeroImage)
                 .WithRequiredPrincipal(s => s.Heroes);
         }
+
+        public System.Data.Entity.DbSet<WebApiRepository.ViewModels.HeroesViewModel> HeroesViewModels { get; set; }
     }
 }

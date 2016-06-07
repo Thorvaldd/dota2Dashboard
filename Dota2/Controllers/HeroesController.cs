@@ -29,5 +29,10 @@ namespace Dota2.Controllers
             //return Json(results, JsonRequestBehavior.AllowGet);
             return Json(results, JsonRequestBehavior.AllowGet);
         }
+
+        public PartialViewResult GetHeroesPartial()
+        {
+            return PartialView("Partials/HeroesPartial");
+        }
     }
 }
