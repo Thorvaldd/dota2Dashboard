@@ -20,7 +20,7 @@ namespace WebApiRepository.Implementations.RepositoryRequests
         #endregion
         public List<Heroes> GetAllHeroes()
         {
-            var heroes = _unitOfWork.Repository<Heroes>().Get().ToList();
+            var heroes = _unitOfWork.Repository<Heroes>().Get(includeProperties:x=>x.HeroImage).ToList();
 
             return heroes;
         }

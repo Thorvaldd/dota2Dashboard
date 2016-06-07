@@ -1,8 +1,7 @@
-﻿using System.Configuration;
+﻿using Dota2ApiWrapper;
+using System.Configuration;
 using System.Threading.Tasks;
-using Dota2Api;
-using Dota2Api.Enums;
-using WebApiRepository.Mappers;
+using Dota2ApiWrapper.Enums;
 using WebApiRepository.Mappers.ApiMappers;
 using WebApiRepository.ViewModels;
 

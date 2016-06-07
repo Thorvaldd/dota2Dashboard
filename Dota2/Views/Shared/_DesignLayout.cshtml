@@ -50,7 +50,7 @@
                         <li>
                             <h1 class="logo-wrapper">
                                 <a href="#" class="brand-logo darken-1">
-                                    <img src="@Url.Content("~/Content/img/logo.png")" alt="materialize logo">
+                                    @*<img src="@Url.Content("~/Content/img/logo.png")" alt="materialize logo">*@
                                 </a>
                                 <span class="logo-text">Materialize</span>
                             </h1>
@@ -176,9 +176,15 @@
                         </div>
                     </li>
                     <li class="bold active">
-                        <a href="@Url.Action("Index","Heroes")" class="waves-effec waves-cyan">
+                        <a href="@Url.Action("Index", "Heroes")" class="waves-effec waves-cyan">
                             <i class="mdi-action-account-circle"></i>
                             Heroes
+                        </a>
+                    </li>
+                    <li class="bold">
+                        <a href="#" class="waves-effect waves-ripple">
+                            <i class="mdi-device-now-widgets"></i>
+                            Game statistic
                         </a>
                     </li>
                     

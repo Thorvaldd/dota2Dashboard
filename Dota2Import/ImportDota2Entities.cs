@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
 using WebApiRepository;
-using WebApiRepository.Implementations;
+using WebApiRepository.Implementations.ApiRequests;
 using WebApiRepository.Models;
 
 namespace Dota2Import

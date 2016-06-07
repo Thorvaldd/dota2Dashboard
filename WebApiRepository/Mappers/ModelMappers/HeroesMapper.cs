@@ -21,8 +21,7 @@ namespace WebApiRepository.Mappers.ModelMappers
                 Id = hero.Id,
                 Name = hero.Name,
                 ValveName = hero.ValveHeroName,
-                HeroImage = new byte[0], //hero.HeroImage.Blob,
-                Base64Image = ""//Convert.ToBase64String(hero.HeroImage.Blob)
+                CloudinaryUrl = hero.HeroImage.SmaillImageCloudinaryUrl
             };
 
             return vm;

@@ -30,7 +30,20 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.6.0.4\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -40,7 +53,64 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ApiClasses\AbilityUpgrade.cs" />
+    <Compile Include="ApiClasses\Barrack.cs" />
+    <Compile Include="ApiClasses\DetailedMatch.cs" />
+    <Compile Include="ApiClasses\ExtendedPlayer.cs" />
+    <Compile Include="ApiClasses\Hero.cs" />
+    <Compile Include="ApiClasses\League.cs" />
+    <Compile Include="ApiClasses\LiveLeagueMatch.cs" />
+    <Compile Include="ApiClasses\LiveLeaguePlayer.cs" />
+    <Compile Include="ApiClasses\LiveLeagueScoreboard.cs" />
+    <Compile Include="ApiClasses\LiveLeagueScoreboardPlayer.cs" />
+    <Compile Include="ApiClasses\LiveLeagueTeam.cs" />
+    <Compile Include="ApiClasses\Match.cs" />
+    <Compile Include="ApiClasses\MatchPlayer.cs" />
+    <Compile Include="ApiClasses\PickBanHero.cs" />
+    <Compile Include="ApiClasses\Player.cs" />
+    <Compile Include="ApiClasses\SlotItem.cs" />
+    <Compile Include="ApiClasses\SteamPlayerSummary.cs" />
+    <Compile Include="ApiClasses\Team.cs" />
+    <Compile Include="ApiClasses\TeamInfo.cs" />
+    <Compile Include="ApiClasses\Tower.cs" />
+    <Compile Include="ApiHandler.cs" />
+    <Compile Include="Converters\DetailMatchFactionConverter.cs" />
+    <Compile Include="Converters\NumberToEnumConverter.cs" />
+    <Compile Include="Converters\PlayerSlotFactionConverter.cs" />
+    <Compile Include="Converters\StringUriConverter.cs" />
+    <Compile Include="Converters\UnixDateTimeConverter.cs" />
+    <Compile Include="Converters\Utils.cs" />
+    <Compile Include="Enums\BarrackPosition.cs" />
+    <Compile Include="Enums\CommunityVisibilityState.cs" />
+    <Compile Include="Enums\Faction.cs" />
+    <Compile Include="Enums\GameMode.cs" />
+    <Compile Include="Enums\HeroPortraitSize.cs" />
+    <Compile Include="Enums\LeaverStatus.cs" />
+    <Compile Include="Enums\LobbyType.cs" />
+    <Compile Include="Enums\PlayerStatus.cs" />
+    <Compile Include="Enums\TowerPosition.cs" />
+    <Compile Include="Enums\UltimateState.cs" />
+    <Compile Include="Exceptions\InvalidApiKeyException.cs" />
+    <Compile Include="Exceptions\MissingAccountIdException.cs" />
+    <Compile Include="Exceptions\ServiceUnavailableException.cs" />
+    <Compile Include="Exceptions\UserNotAllowingDataCollectionException.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Results\ApiResult.cs" />
+    <Compile Include="Results\GetMatchHistoryBySequenceNumResult.cs" />
+    <Compile Include="Results\GetTeamInfoResult.cs" />
+    <Compile Include="Results\HeroResult.cs" />
+    <Compile Include="Results\LeagueListingResult.cs" />
+    <Compile Include="Results\LiveLeagueGamesResult.cs" />
+    <Compile Include="Results\MatchHistoryResult.cs" />
+    <Compile Include="Results\SteamPlayerSummaryResult.cs" />
+    <Compile Include="Results\TournamentPrizePoolResult.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="ApiHandler\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

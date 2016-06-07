@@ -6,7 +6,7 @@
     $.get('/Heroes/GetHeroes', function(data) {
         ko.mapping.fromJS(data, self.HeroesModel);
     });
-    debugger 
+    
 }
 
 ko.applyBindings(new HeroesViewModel())

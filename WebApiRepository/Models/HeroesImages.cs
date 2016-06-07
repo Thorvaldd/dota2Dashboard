@@ -11,6 +11,8 @@ namespace WebApiRepository.Models
         [Column("smallimage")]
         public byte[] Blob { get; set; }
 
+        [Column("cloudinmaryUrl")]
+        public string SmaillImageCloudinaryUrl { get; set; }
      
         public int HeroId { get; set; }
 

@@ -9,5 +9,7 @@
         public byte[] HeroImage { get; set; }
         public string Base64Image { get; set; }
 
+        public string CloudinaryUrl { get; set; }
+
     }
 }

@@ -13,15 +13,23 @@ namespace Dota2Import
             try
             {
                 // ImportDota2Entities.ImportHeroes();
-              //  ImportDota2Entities.ImportSmallHeroIcons();
+                //  ImportDota2Entities.ImportSmallHeroIcons();
+                var img = new ImageConverting();
+
+               // img.SaveSmallImagesToDirectory();
+              //  img.UploadImagesToCloudinary();
+
+                img.SaveUploadedImagesUrlToDb();
+
                 Console.ReadLine();
             }
             catch (Exception e)
             {
-                
+
                 Console.WriteLine(e.Message);
+                Console.Read();
             }
-           
+
         }
     }
 }

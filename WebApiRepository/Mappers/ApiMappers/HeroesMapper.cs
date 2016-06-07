@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Dota2Api.ApiClasses;
-using Dota2Api.Results;
+using Dota2ApiWrapper.ApiClasses;
+using Dota2ApiWrapper.Results;
 using WebApiRepository.ViewModels;
 
 namespace WebApiRepository.Mappers.ApiMappers
