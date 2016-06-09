@@ -9,12 +9,12 @@
     <!--Import materialize.css-->
     <link href="~/Content/css/libs/materialize/materialize.min.css" type="text/css" media="screen,projection" rel="stylesheet" />
     <!--CORE CSS-->
-    <link href="~/Content/css/libs/materialize/style.min.css"type="text/css" media="screen,projection" rel="stylesheet" />
+    <link href="~/Content/css/libs/materialize/style.min.css" type="text/css" media="screen,projection" rel="stylesheet" />
     <!--CUSTOM CSS TO OVVERIDE CURRENT-->
     <link href="~/Content/css/libs/materialize/custom.css" type="text/css" media="screen,projection" rel="stylesheet" />
 
     <!-- INCLUDED CSS PLUGIN ON THIS PAGE -->
-    <link href="~/Scripts/libs/materialize/plugins/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" media="screen,projection"/>
+    <link href="~/Scripts/libs/materialize/plugins/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" media="screen,projection" />
     <link href="~/Scripts/libs/materialize/plugins/chartist-js/chartist.min.css" type="text/css" rel="stylesheet" media="screnn,projection" />
     <link href="~/Scripts/libs/materialize/plugins/jvectormap/jquery-jvectormap.css" type="text/css" rel="stylesheet" media="screnn,projection" />
     <!--Let browser know website is optimized for mobile-->
@@ -176,19 +176,19 @@
                             </div>
                         </div>
                     </li>
-                    <li class="bold active">
-                        @*<a href="@Url.Action("Index", "Heroes")" class="waves-effec waves-cyan">
-                            <i class="mdi-action-account-circle"></i>
-                            Heroes
-                        </a>*@
+                    <li class="bold @Html.IsActive(actions: "Index", controllers: "Heroes")">
+                        <a href="@Url.Action("GetHeroesPartial", "Heroes")" data-rebind-url="@Url.Action("GetHeroes", "Heroes")" class="waves-effec waves-cyan">
+                                <i class="mdi-action-account-circle"></i>
+                                Heroes
+                            </a>
                     </li>
-                    <li class="bold">
-                        <a href="#" class="waves-effect waves-ripple">
+                    <li class="bold @Html.IsActive(actions: "Index", controllers: "Stats")">
+                        <a href="@Url.Action("GetStatsPartial", "Stats")" data-rebind-url="/something" class="waves-effect waves-ripple">
                             <i class="mdi-device-now-widgets"></i>
                             Game statistic
                         </a>
                     </li>
-                    
+
                 </ul>
                 <a href="#" data-activates="slide-out" class="sidebar-collapse btn-floating btn-medium waves-effect waves-light hide-on-large-only cyan">
                     <i class="mdi-navigation-menu"></i>12
@@ -197,10 +197,10 @@
             <!-- END LEFT SIDEBAR NAV-->
             <!-- START CONTENT -->
             <section id="content">
-                <div class="container">
+                <div class="container" id="container">
                     @RenderBody()
                 </div>
-              
+
             </section>
             <!-- END CONTENT -->
             <!-- START RIGHT SIDEBAR NAV-->
@@ -256,6 +256,10 @@
         ================================================ -->
     <!--Jquery Library -->
     @Scripts.Render("~/bundles/jquery")
+    <!--Unobtrusive ajax-->
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
     <!--knockout & knockout mapping-->
     @Scripts.Render("~/Scripts/libs/knockout/knockout.min.js")
     @Scripts.Render("~/Scripts/libs/knockout/knockout.mapping.min.js")
@@ -292,7 +296,7 @@
 
     <!--custom-script.js - Add your own theme custom JS-->
     @Scripts.Render("~/Scripts/common.js")
-
+    @Scripts.Render("~/Scripts/pages/menu.js")
     @RenderSection("scripts", false)
 </body>
 </html>

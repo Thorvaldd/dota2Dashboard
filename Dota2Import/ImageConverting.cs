@@ -85,21 +85,6 @@ namespace Dota2Import
                     img.HeroImage.SmaillImageCloudinaryUrl = cloudinaryUrl.Url;
                     db.SaveChanges();
                 }
-                //var iamges = _cloudinary.GetResource("").Url
-                //foreach (var result in uploadResults)
-                //{
-                //    var itemToUpdate = db.Heroes.Include(x => x.HeroImage)
-                //        .FirstOrDefault(x => x.ValveHeroName == result.PublicId);
-
-                //    if (itemToUpdate != null)
-                //    {
-                //        Console.WriteLine("Saving image {0}, URL -> {1}", itemToUpdate.ValveHeroName, result.Uri.LocalPath);
-                //        itemToUpdate.HeroImage.SmaillImageCloudinaryUrl = result.Uri.LocalPath;
-                //        db.SaveChanges();
-                //    }
-                //}
-
-                //Console.ReadLine();
             }
         }
 
