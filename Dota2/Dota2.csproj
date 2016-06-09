@@ -374,10 +374,14 @@
   <Target Name="AfterBuild">
   </Target> -->
   <PropertyGroup>
-     <PostBuildEvent>
+    <PostBuildEvent>
        if not exist "$(WebProjectOutputDir)\bin\Roslyn" md "$(WebProjectOutputDir)\bin\Roslyn"
        start /MIN xcopy /s /y /R "$(OutDir)roslyn\*.*" "$(WebProjectOutputDir)\bin\Roslyn"
      </PostBuildEvent>
-     <Prefer32Bit>false</Prefer32Bit>
-   </PropertyGroup>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+  </PropertyGroup>
 </Project>
