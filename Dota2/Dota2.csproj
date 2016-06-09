@@ -378,9 +378,5 @@
        if not exist "$(WebProjectOutputDir)\bin\Roslyn" md "$(WebProjectOutputDir)\bin\Roslyn"
        start /MIN xcopy /s /y /R "$(OutDir)roslyn\*.*" "$(WebProjectOutputDir)\bin\Roslyn"
      </PostBuildEvent>
-     <PostBuildEvent>
-     if not exist "$(WebProjectOutputDir)\bin\x86" md "$(WebProjectOutputDir)\bin\x86"
-       start /MIN xcopy /s /y /R "$(OutDir)x86\*.*" "$(WebProjectOutputDir)\bin\x86"
-     </PostBuildEvent>
    </PropertyGroup>
 </Project>
