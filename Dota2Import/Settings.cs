@@ -6,7 +6,10 @@ namespace Dota2Import
     {
         public static string UploadSmallImageDirectory
         {
-            get { return string.Format("{0}",AppDomain.CurrentDomain.BaseDirectory + "small_hero_images\\"); }
+            get
+            {
+                return string.Format("{0}",AppDomain.CurrentDomain.BaseDirectory + "small_hero_images\\");
+            }
         } 
     }
 }
