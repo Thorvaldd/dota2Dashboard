@@ -1,11 +1,11 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using SQLite.Net.Attributes;
 
 namespace WebApiRepository.Models
 {
     [Table(name: "HeroesImages")]
     public class HeroesImages
     {
-        [Column(name: "id")]
+        [Column(name: "id"), AutoIncrement]
         public int Id { get; set; }
 
         [Column("smallimage")]
@@ -14,6 +14,7 @@ namespace WebApiRepository.Models
         [Column("cloudinmaryUrl")]
         public string SmaillImageCloudinaryUrl { get; set; }
      
+        [Column("heroid")]
         public int HeroId { get; set; }
 
         public virtual Heroes Heroes { get; set; }
