@@ -17,7 +17,8 @@ namespace Dota2.Controllers
 
 
         // GET: Heroes page
-        public ActionResult Index()
+        public ActionResult Index() 
+
         {
             return View();
         }
