@@ -137,7 +137,7 @@
                     <li class="user-details cyan darken-2">
                         <div class="row">
                             <div class="col col s4 m4 14">
-                                <img src="@Url.Content("~/Content/img/user.jpg")" alt="" class="circle responsive-img valign profile-image"/>
+                                <img src="@Url.Content("~/Content/img/user.jpg")" alt="" class="circle responsive-img valign profile-image" />
                             </div>
                             <div class="col col s8 m8 18">
                                 <a class="btn-flat dropdown-button waves-effect waves-light white-text profile-btn" href="#" data-activates="profile-dropdown">
@@ -177,13 +177,13 @@
                         </div>
                     </li>
                     <li class="bold @Html.IsActive(actions: "Index", controllers: "Heroes")">
-                        <a href="@Url.Action("GetHeroesPartial", "Heroes")" data-bind="menu:{rebindUrl: '@Url.Action("GetHeroes","Heroes")'}" class="waves-effec waves-cyan">
-                                <i class="mdi-action-account-circle"></i>
-                                Heroes
-                            </a>
+                        <a href="@Url.Action("GetHeroesPartial", "Heroes")" data-rebind-url="@Url.Action("GetHeroes","Heroes")" class="waves-effec waves-cyan">
+                            <i class="mdi-action-account-circle"></i>
+                            Heroes
+                        </a>
                     </li>
                     <li class="bold @Html.IsActive(actions: "Index", controllers: "Stats")">
-                        <a href="@Url.Action("GetStatsPartial", "Stats")" data-bind="menu:{rebindUrl: '/something'}" class="waves-effect waves-ripple">
+                        <a href="@Url.Action("GetStatsPartial", "Stats")" data-rebind-url="@Url.Action("GetUserInfo", "Stats")" class="waves-effect waves-ripple">
                             <i class="mdi-device-now-widgets"></i>
                             Game statistic
                         </a>
@@ -260,6 +260,10 @@
     <script src="~/Scripts/jquery.validate.min.js"></script>
     <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
     <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+    <!--floatThead-->
+    @Scripts.Render("~/Scripts/libs/materialize/plugins/floatThead/jquery.floatThead.min.js")
+    @Scripts.Render("~/Scripts/libs/materialize/plugins/floatThead/jquery.floatThead-slim.min.js")
     <!--knockout & knockout mapping-->
     @Scripts.Render("~/Scripts/libs/knockout/knockout.min.js")
     @Scripts.Render("~/Scripts/libs/knockout/knockout.mapping.min.js")
@@ -296,8 +300,9 @@
 
     <!--custom-script.js - Add your own theme custom JS-->
     @Scripts.Render("~/Scripts/common.js")
-    @*@Scripts.Render("~/Scripts/pages/menu.js")*@
-    @Scripts.Render("~/Scripts/knockout-extensions.js")
+        @Scripts.Render("~/Scripts/knockout-extensions.js")
+        <script src="~/Scripts/menu.js"></script>
+
     @RenderSection("scripts", false)
 </body>
 </html>

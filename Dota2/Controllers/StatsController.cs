@@ -1,8 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Threading.Tasks;
 using System.Web.Mvc;
+using Dota2ApiWrapper;
+using WebApiRepository.Implementations.ApiRequests;
 
 namespace Dota2.Controllers
 {
@@ -12,6 +11,14 @@ namespace Dota2.Controllers
         public ActionResult Index()
         {
             return View();
+        }
+
+        public async Task<JsonResult> GetUserInfo(string userName)
+        {
+            var api = new Dota2Results();
+
+            var result = await api.GetUserInfoByNick(userName);
+            return Json(result, JsonRequestBehavior.AllowGet);
         }
 
         public PartialViewResult GetStatsPartial()

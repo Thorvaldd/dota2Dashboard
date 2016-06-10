@@ -9,8 +9,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Dota2ApiWrapper</RootNamespace>
     <AssemblyName>Dota2ApiWrapper</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -73,6 +74,7 @@
     <Compile Include="ApiClasses\Team.cs" />
     <Compile Include="ApiClasses\TeamInfo.cs" />
     <Compile Include="ApiClasses\Tower.cs" />
+    <Compile Include="ApiClasses\UserInfo.cs" />
     <Compile Include="ApiHandler.cs" />
     <Compile Include="Converters\DetailMatchFactionConverter.cs" />
     <Compile Include="Converters\NumberToEnumConverter.cs" />
@@ -105,9 +107,7 @@
     <Compile Include="Results\SteamPlayerSummaryResult.cs" />
     <Compile Include="Results\TournamentPrizePoolResult.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ApiHandler\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />

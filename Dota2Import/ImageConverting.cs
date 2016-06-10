@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Configuration;
 using System.Data.Entity;
 using System.Drawing;
@@ -39,16 +38,16 @@ namespace Dota2Import
             {
                 Directory.CreateDirectory(appdomain);
             }
-            using (var db = new SqlLiteContext())
+            using (var db = new ApplicationContext())
             {
                 var heroAndImages = db.Heroes.Include(x => x.HeroImage).ToList();
-                foreach (var image in heroAndImages)
-                {
-                    using (var img = Image.FromStream(new MemoryStream(image.HeroImage.Blob)))
-                    {
-                        img.Save(appdomain + image.ValveHeroName + ".png", ImageFormat.Png);
-                    }
-                }
+                //foreach (var image in heroAndImages)
+                //{
+                //    using (var img = Image.FromStream(new MemoryStream(image.HeroImage.Blob)))
+                //    {
+                //        img.Save(appdomain + image.ValveHeroName + ".png", ImageFormat.Png);
+                //    }
+                //}
             }
         }
 
@@ -75,7 +74,7 @@ namespace Dota2Import
 
         public void SaveUploadedImagesUrlToDb()
         {
-            using (var db = new SqlLiteContext())
+            using (var db = new ApplicationContext())
             {
                 var imgDB = db.Heroes.Include(x => x.HeroImage).ToList();
 

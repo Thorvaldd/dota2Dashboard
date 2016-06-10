@@ -2,7 +2,6 @@
 using System.Linq;
 using WebApiRepository;
 using WebApiRepository.Implementations.ApiRequests;
-using WebApiRepository.Models;
 
 namespace Dota2Import
 {
@@ -12,7 +11,7 @@ namespace Dota2Import
         {
             var apiRepo = new Dota2Results();
             var heroesResult = apiRepo.GetHores().Result;
-            using (var ctx = new SqlLiteContext())
+            using (var ctx = new ApplicationContext())
             {
                 foreach (var hero in heroesResult.Heroes)
                 {
@@ -35,7 +34,7 @@ namespace Dota2Import
         public static async void ImportSmallHeroIcons()
         {
             var apiHero = new Dota2Results();
-            using (var db = new SqlLiteContext())
+            using (var db = new ApplicationContext())
             {
                 var dbHeroes = db.Heroes.ToList();
                 var id = 0;
@@ -43,14 +42,14 @@ namespace Dota2Import
                 {
                     id++;
                     var byteResult = await apiHero.HeroImage(dbHero.ValveHeroName, 0);
-                    var heroImage = new HeroesImages
-                    {
+                    //var heroImage = new HeroesImages
+                    //{
 
-                        Blob = byteResult,
-                        HeroId = dbHero.Id,
-                        Id = id
-                    };
-                    db.HeroImage.Add(heroImage);
+                    //    Blob = byteResult,
+                    //    HeroId = dbHero.Id,
+                    //    Id = id
+                    //};
+                    //db.HeroImage.Add(heroImage);
                     Console.WriteLine("Added {0} image", dbHero.Name);
                 }
                 db.SaveChanges();

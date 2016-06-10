@@ -3,9 +3,9 @@ using WebApiRepository.Models;
 
 namespace WebApiRepository
 {
-    public class SqlLiteContext : DbContext
+    public class ApplicationContext : DbContext
     {
-       public SqlLiteContext() : base("name=Dota2Db") { }
+       public ApplicationContext() : base("name=1gbD2api") { }
 
         public DbSet<Heroes> Heroes { get; set; }
 
@@ -20,7 +20,5 @@ namespace WebApiRepository
                 .HasRequired(s => s.HeroImage)
                 .WithRequiredPrincipal(s => s.Heroes);
         }
-
-        public System.Data.Entity.DbSet<WebApiRepository.ViewModels.HeroesViewModel> HeroesViewModels { get; set; }
     }
 }

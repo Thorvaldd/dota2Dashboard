@@ -1,9 +1,10 @@
 ﻿using Dota2ApiWrapper;
 using System.Configuration;
 using System.Threading.Tasks;
+using Dota2ApiWrapper.ApiClasses;
 using Dota2ApiWrapper.Enums;
+using ViewModels;
 using WebApiRepository.Mappers.ApiMappers;
-using WebApiRepository.ViewModels;
 
 namespace WebApiRepository.Implementations.ApiRequests
 {
@@ -40,6 +41,12 @@ namespace WebApiRepository.Implementations.ApiRequests
 
             var picture = await _api.GetHeroPortrait(dashedHeroName, herosize);
             return picture;
+        }
+
+        public async Task<SteamPlayerSummary> GetUserInfoByNick(string nickName)
+        {
+            var user = await _api.GetUserInfoByNickName(nickName);
+            return user;
         }
     }
 }

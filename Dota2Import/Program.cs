@@ -1,11 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Dota2Import
 {
+    /// <summary>
+    /// TODO currently not working because of removing blob from db. 
+    /// TODO At first need save file localy, then upload to cloudinary.
+    /// </summary>
     class Program
     {
         static void Main(string[] args)

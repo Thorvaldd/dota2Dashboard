@@ -1,23 +1,30 @@
-﻿<table class="bordered highlight">
-    <thead>
-    <tr>
-        <th data-field="id">Id</th>
-        <th data-field="name">Name</th>
-        <th data-field="name">Valve name</th>
-        <th data-field="image"></th>
-    </tr>
-    </thead>
+﻿<div id="heroescontainer">
+    <div class="row">
+        <div class="col s12 m12 12">
+            <div class="card">
+                <table class="bordered highlight centered">
+                    <thead>
+                        <tr>
+                            <th data-field="id">Id</th>
+                            <th data-field="name">Name</th>
+                            <th data-field="name">Valve name</th>
+                            <th data-field="image"></th>
+                        </tr>
+                    </thead>
 
-    <tbody id="bindContainer" data-bind="foreach:Model">
-    <tr>
-        <td data-bind="text:Id"></td>
-        <td data-bind="text:Name"></td>
-        <td data-bind="text:ValveName"></td>
-        <td>
-            <img data-bind="attr: {src: CloudinaryUrl}"/>
-        </td>
+                    <tbody id="bindContainer" data-bind="foreach:Model">
+                        <tr>
+                            <td data-bind="text:Id"></td>
+                            <td data-bind="text:Name"></td>
+                            <td data-bind="text:ValveName"></td>
+                            <td>
+                                <img data-bind="attr: {src: CloudinaryUrl}" />
+                            </td>
 
-    </tr>
-    </tbody>
-</table>
-
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

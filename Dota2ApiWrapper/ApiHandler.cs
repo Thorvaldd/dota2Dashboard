@@ -373,6 +373,32 @@ namespace Dota2ApiWrapper
             }
         }
 
+        public async Task<SteamPlayerSummary> GetUserInfoByNickName(string nickname)
+        {
+            try
+            {
+                var extra = new StringBuilder();
+                extra.AppendFormat("{0}{1}", "&vanityurl=",
+                    !string.IsNullOrEmpty(nickname) ? nickname : "gabelogannewell");
+                //get user info by playerid
+                var queryString = QueryBuilder(BASE_ADDRESS, "ISteamUser/ResolveVanityURL/v0001/", _keyString, extra.ToString());
+
+                var content = await GetStringAsync(queryString);
+
+                var apiResult = JsonConvert.DeserializeObject<ApiResult<UserInfo>>(content);
+                
+                //get user info by steam id
+                var playerSummary = await GetPlayerSummary(new[] {apiResult.Response.SteamId});
+                var playerInfo = playerSummary.Players.First();
+                return playerInfo;
+            }
+            catch (Exception)
+            {
+                
+                throw;
+            }
+        }
+
         public void CancelPendingRequests()
         {
             _client.CancelPendingRequests();
