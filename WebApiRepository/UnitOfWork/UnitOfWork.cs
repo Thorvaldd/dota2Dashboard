@@ -9,12 +9,12 @@ namespace WebApiRepository.UnitOfWork
         #region Fields & constructor
 
         private bool _disposed;
-        private readonly SqlLiteContext _context;
+        private readonly ApplicationContext _context;
         private ConcurrentDictionary<string, object> _repositories;
 
         public UnitOfWork()
         {
-            _context = new SqlLiteContext();
+            _context = new ApplicationContext();
         }
         #endregion
 

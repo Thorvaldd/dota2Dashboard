@@ -8,10 +8,10 @@ namespace WebApiRepository.Repository
 {
     public class GenericRepository<T>  : IGenericRepository<T> where T: class 
     {
-        internal SqlLiteContext _context;
+        internal ApplicationContext _context;
         internal DbSet<T> dbSet;
 
-        public GenericRepository(SqlLiteContext context)
+        public GenericRepository(ApplicationContext context)
         {
             _context = context;
             dbSet = _context.Set<T>();

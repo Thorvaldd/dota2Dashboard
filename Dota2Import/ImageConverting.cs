@@ -39,7 +39,7 @@ namespace Dota2Import
             {
                 Directory.CreateDirectory(appdomain);
             }
-            using (var db = new SqlLiteContext())
+            using (var db = new ApplicationContext())
             {
                 var heroAndImages = db.Heroes.Include(x => x.HeroImage).ToList();
                 foreach (var image in heroAndImages)
@@ -75,7 +75,7 @@ namespace Dota2Import
 
         public void SaveUploadedImagesUrlToDb()
         {
-            using (var db = new SqlLiteContext())
+            using (var db = new ApplicationContext())
             {
                 var imgDB = db.Heroes.Include(x => x.HeroImage).ToList();
 

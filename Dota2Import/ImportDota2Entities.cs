@@ -12,7 +12,7 @@ namespace Dota2Import
         {
             var apiRepo = new Dota2Results();
             var heroesResult = apiRepo.GetHores().Result;
-            using (var ctx = new SqlLiteContext())
+            using (var ctx = new ApplicationContext())
             {
                 foreach (var hero in heroesResult.Heroes)
                 {
@@ -35,7 +35,7 @@ namespace Dota2Import
         public static async void ImportSmallHeroIcons()
         {
             var apiHero = new Dota2Results();
-            using (var db = new SqlLiteContext())
+            using (var db = new ApplicationContext())
             {
                 var dbHeroes = db.Heroes.ToList();
                 var id = 0;
