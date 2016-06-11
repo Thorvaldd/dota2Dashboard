@@ -1,17 +1,13 @@
-﻿using SQLite.Net.Attributes;
-
+﻿using System.ComponentModel.DataAnnotations.Schema;
 namespace WebApiRepository.Models
 {
     [Table(name: "HeroesImages")]
     public class HeroesImages
     {
-        [Column(name: "id"), AutoIncrement]
+        [Column(name: "id")]
         public int Id { get; set; }
 
-        [Column("smallimage")]
-        public byte[] Blob { get; set; }
-
-        [Column("cloudinmaryUrl")]
+        [Column("cloudinaryUrl")]
         public string SmaillImageCloudinaryUrl { get; set; }
      
         [Column("heroid")]

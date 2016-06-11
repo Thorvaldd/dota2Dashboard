@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 
 namespace Dota2ApiWrapper.Converters
@@ -18,7 +19,10 @@ namespace Dota2ApiWrapper.Converters
             if (string.IsNullOrEmpty(value))
                 return null;
 
-            if (!value.StartsWith("http://"))
+            //if (!value.Contains("http://") || !value.Contains("https://"))
+            //    value = "http://" + value;
+            Regex rgx = new Regex(@"^(http(s)?)://.*$", RegexOptions.Compiled);
+            if(!rgx.IsMatch(value))
                 value = "http://" + value;
 
             Uri.TryCreate(value, UriKind.Absolute, out uri);

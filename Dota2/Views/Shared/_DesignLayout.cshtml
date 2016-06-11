@@ -23,7 +23,8 @@
 
     <!-- Favicons-->
     <!--TODO Need to set correct favicons-->
-    @*<link rel="icon" href="images/favicon/favicon-32x32.png" sizes="32x32">
+    <link rel="icon" href="/favicon.ico" sizes="32x32">
+    @*
         <!-- Favicons-->
         <link rel="apple-touch-icon-precomposed" href="images/favicon/apple-touch-icon-152x152.png">
         <!-- For iPhone -->
@@ -176,14 +177,15 @@
                             </div>
                         </div>
                     </li>
+
                     <li class="bold @Html.IsActive(actions: "Index", controllers: "Heroes")">
-                        <a href="@Url.Action("GetHeroesPartial", "Heroes")" data-rebind-url="@Url.Action("GetHeroes", "Heroes")" class="waves-effec waves-cyan">
-                                <i class="mdi-action-account-circle"></i>
-                                Heroes
-                            </a>
+                        <a href="@Url.Action("GetHeroesPartial", "Heroes")" data-get="heroes" class="waves-effec waves-cyan">
+                            <i class="mdi-action-account-circle"></i>
+                            Heroes
+                        </a>
                     </li>
                     <li class="bold @Html.IsActive(actions: "Index", controllers: "Stats")">
-                        <a href="@Url.Action("GetStatsPartial", "Stats")" data-rebind-url="/something" class="waves-effect waves-ripple">
+                        <a href="@Url.Action("GetStatsPartial", "Stats")" data-get="stats"  class="waves-effect waves-ripple">
                             <i class="mdi-device-now-widgets"></i>
                             Game statistic
                         </a>
@@ -260,6 +262,10 @@
     <script src="~/Scripts/jquery.validate.min.js"></script>
     <script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
     <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+
+    <!--floatThead-->
+    @Scripts.Render("~/Scripts/libs/materialize/plugins/floatThead/jquery.floatThead.min.js")
+    @Scripts.Render("~/Scripts/libs/materialize/plugins/floatThead/jquery.floatThead-slim.min.js")
     <!--knockout & knockout mapping-->
     @Scripts.Render("~/Scripts/libs/knockout/knockout.min.js")
     @Scripts.Render("~/Scripts/libs/knockout/knockout.mapping.min.js")
@@ -296,7 +302,14 @@
 
     <!--custom-script.js - Add your own theme custom JS-->
     @Scripts.Render("~/Scripts/common.js")
-    @Scripts.Render("~/Scripts/pages/menu.js")
+    @Scripts.Render("~/Scripts/knockout-extensions.js")
+    <script src="~/Scripts/menu.js"></script>
     @RenderSection("scripts", false)
+
+    <div id="loader-container-wrapper" style="display: none">
+        <div id="container-loader"></div>
+        <div class="loader-section section-left"></div>
+        <div class="loader-section section-right"></div>
+    </div>
 </body>
 </html>

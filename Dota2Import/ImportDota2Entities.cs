@@ -2,7 +2,6 @@
 using System.Linq;
 using WebApiRepository;
 using WebApiRepository.Implementations.ApiRequests;
-using WebApiRepository.Models;
 
 namespace Dota2Import
 {
@@ -43,14 +42,14 @@ namespace Dota2Import
                 {
                     id++;
                     var byteResult = await apiHero.HeroImage(dbHero.ValveHeroName, 0);
-                    var heroImage = new HeroesImages
-                    {
+                    //var heroImage = new HeroesImages
+                    //{
 
-                        Blob = byteResult,
-                        HeroId = dbHero.Id,
-                        Id = id
-                    };
-                    db.HeroImage.Add(heroImage);
+                    //    Blob = byteResult,
+                    //    HeroId = dbHero.Id,
+                    //    Id = id
+                    //};
+                    //db.HeroImage.Add(heroImage);
                     Console.WriteLine("Added {0} image", dbHero.Name);
                 }
                 db.SaveChanges();

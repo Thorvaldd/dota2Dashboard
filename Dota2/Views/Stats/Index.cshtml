@@ -4,6 +4,9 @@
     Layout = "~/Views/Shared/_DesignLayout.cshtml";
 }
 
-<h2>Index</h2>
 
 @Html.Partial("Partials/StatsPartial")
+
+@section scripts{
+    <script src="~/Scripts/pages/stats.js"></script>
+}

@@ -74,6 +74,7 @@
     <Compile Include="ApiClasses\Team.cs" />
     <Compile Include="ApiClasses\TeamInfo.cs" />
     <Compile Include="ApiClasses\Tower.cs" />
+    <Compile Include="ApiClasses\UserInfo.cs" />
     <Compile Include="ApiHandler.cs" />
     <Compile Include="Converters\DetailMatchFactionConverter.cs" />
     <Compile Include="Converters\NumberToEnumConverter.cs" />
@@ -106,9 +107,7 @@
     <Compile Include="Results\SteamPlayerSummaryResult.cs" />
     <Compile Include="Results\TournamentPrizePoolResult.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="ApiHandler\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />

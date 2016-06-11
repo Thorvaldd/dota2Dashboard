@@ -2,7 +2,7 @@
 using System.Linq;
 using Dota2ApiWrapper.ApiClasses;
 using Dota2ApiWrapper.Results;
-using WebApiRepository.ViewModels;
+using ViewModels;
 
 namespace WebApiRepository.Mappers.ApiMappers
 {

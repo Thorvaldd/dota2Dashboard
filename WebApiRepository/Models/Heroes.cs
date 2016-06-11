@@ -1,11 +1,11 @@
-﻿using SQLite.Net.Attributes;
+﻿using System.ComponentModel.DataAnnotations.Schema;
 
 namespace WebApiRepository.Models
 {
     [Table("Heroes")]
     public class Heroes
     {
-        [Column(name: "id"), AutoIncrement]
+        [Column(name: "id")]
         public int Id { get; set; }
 
         [Column(name:"name")]

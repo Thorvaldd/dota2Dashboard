@@ -3,3 +3,21 @@
     top: -16px;
     position: relative;
 }
+
+#heroescontainer {
+    padding-top: 12px;
+}
+
+.floated {
+    background: #ECEFF1;
+}
+
+.loader {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+}
+
+.input-field label {
+    top: 0;
+}
