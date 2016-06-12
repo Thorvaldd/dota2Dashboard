@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Dota2ApiWrapper.Converters;
 using Dota2ApiWrapper.Enums;
 using Newtonsoft.Json;
@@ -20,6 +21,11 @@ namespace Dota2ApiWrapper.ApiClasses
         private PlayerStatus _playerStatus;
         private string _locationCountryCode;
         #endregion
+
+        public SteamPlayerSummary()
+        {
+            RecentlyPlayedGames = new List<RecentlyPlayedGames>();
+        }
 
         [JsonProperty("avatarfull")]
         [JsonConverter(typeof(StringUriConverter))]
@@ -104,6 +110,9 @@ namespace Dota2ApiWrapper.ApiClasses
             get { return _locationCountryCode; }
             set { _locationCountryCode = value; }
         }
+
+
+        public List<RecentlyPlayedGames> RecentlyPlayedGames { get; set; }
 
     }
 }

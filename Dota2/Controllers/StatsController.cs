@@ -18,6 +18,11 @@ namespace Dota2.Controllers
             var api = new Dota2Results();
 
             var result = await api.GetUserInfoByNick(nickName);
+            var recentgames = await api.GetRecentGamesByUserId(result.SteamId.ToString());
+            if (recentgames.RecentlyPlayedGames.Count > 0)
+            {
+                result.RecentlyPlayedGames.AddRange(recentgames.RecentlyPlayedGames);
+            }
             return Json(result, JsonRequestBehavior.AllowGet);
         }
 

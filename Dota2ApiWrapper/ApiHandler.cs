@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -397,6 +398,37 @@ namespace Dota2ApiWrapper
                 return new SteamPlayerSummary();
             }
             catch (Exception)
+            {
+                
+                throw;
+            }
+        }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="steamId">The SteamID of the account.</param>
+        /// <param name="count">Optionally limit to a certain number of games 
+        /// (the number of games a person has played in the last 2 weeks is typically very small)</param>
+        /// <returns></returns>
+        public async Task<RecentlyPlayedGamesResult> GetRecentlyPlayedGames(string steamId, int? count)
+        {
+            try
+            {
+                var extra = new StringBuilder();
+                if (count.HasValue)
+                    extra.AppendFormat("{0}{1}", "&count=", count.Value);
+
+                extra.AppendFormat("{0}{1}", "&steamid=", steamId);
+
+                var queryString = QueryBuilder(BASE_ADDRESS, "IPlayerService/GetRecentlyPlayedGames/v0001/", _keyString, extra.ToString());
+
+                var content = await GetStringAsync(queryString);
+
+                var apiResult = JsonConvert.DeserializeObject<ApiResult<RecentlyPlayedGamesResult>>(content);
+                return apiResult.Response;
+            }
+            catch (Exception e)
             {
                 
                 throw;

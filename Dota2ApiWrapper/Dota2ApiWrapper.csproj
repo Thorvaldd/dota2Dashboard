@@ -69,6 +69,7 @@
     <Compile Include="ApiClasses\MatchPlayer.cs" />
     <Compile Include="ApiClasses\PickBanHero.cs" />
     <Compile Include="ApiClasses\Player.cs" />
+    <Compile Include="ApiClasses\RecentlyPlayedGames.cs" />
     <Compile Include="ApiClasses\SlotItem.cs" />
     <Compile Include="ApiClasses\SteamPlayerSummary.cs" />
     <Compile Include="ApiClasses\Team.cs" />
@@ -76,12 +77,14 @@
     <Compile Include="ApiClasses\Tower.cs" />
     <Compile Include="ApiClasses\UserInfo.cs" />
     <Compile Include="ApiHandler.cs" />
+    <Compile Include="Converters\ApplicationImageConverter.cs" />
     <Compile Include="Converters\DetailMatchFactionConverter.cs" />
     <Compile Include="Converters\NumberToEnumConverter.cs" />
     <Compile Include="Converters\PlayerSlotFactionConverter.cs" />
     <Compile Include="Converters\StringUriConverter.cs" />
     <Compile Include="Converters\UnixDateTimeConverter.cs" />
     <Compile Include="Converters\Utils.cs" />
+    <Compile Include="Enums\Applications.cs" />
     <Compile Include="Enums\BarrackPosition.cs" />
     <Compile Include="Enums\CommunityVisibilityState.cs" />
     <Compile Include="Enums\Faction.cs" />
@@ -104,6 +107,7 @@
     <Compile Include="Results\LeagueListingResult.cs" />
     <Compile Include="Results\LiveLeagueGamesResult.cs" />
     <Compile Include="Results\MatchHistoryResult.cs" />
+    <Compile Include="Results\RecentlyPlayedGamesResult.cs" />
     <Compile Include="Results\SteamPlayerSummaryResult.cs" />
     <Compile Include="Results\TournamentPrizePoolResult.cs" />
   </ItemGroup>

@@ -17,6 +17,7 @@
                 $('.container').html(html);
                 //change url
                 window.history.pushState(null, null, rebindUrl.split('/').filter(x => x !== '')[0]);
+                //load script with binding function
                 $.getScript('/Scripts/pages/' + executeScript + '.js');
             }
         });
