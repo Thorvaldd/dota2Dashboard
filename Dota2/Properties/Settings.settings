@@ -1,9 +1,0 @@
-﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Dota2.Properties" GeneratedClassName="Settings">
-  <Profiles />
-  <Settings>
-    <Setting Name="connectionString" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">Data Source=mssql4.1gb.ua;Initial Catalog=1gb_x_d2api;Persist Security Info=True;User ID=1gb_d2api;Password=35a220947567</Value>
-    </Setting>
-  </Settings>
-</SettingsFile>
