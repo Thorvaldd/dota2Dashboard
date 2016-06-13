@@ -61,5 +61,13 @@ namespace WebApiRepository.Implementations.ApiRequests
             var recentGames = await _api.GetRecentlyPlayedGames(id, count);
             return recentGames;
         }
+
+        public async Task<MatchHistoryResult> GetMatchHistory(string accountId)
+        {
+            var account32bit = (long.Parse(accountId) - 76561197960265728).ToString();
+            var history = await _api.GetMatchHistory(accountId: account32bit, matchesRequested:"20");
+
+            return history;
+        }
     }
 }

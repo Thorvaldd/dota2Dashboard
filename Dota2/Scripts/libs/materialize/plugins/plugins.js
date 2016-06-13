@@ -172,6 +172,7 @@ $(function () {
     $('select').not('.disabled').material_select();
     var leftnav = $(".page-topbar").height();
     var leftnavHeight = window.innerHeight - leftnav;
+    
     $('.leftside-navigation').height(leftnavHeight).perfectScrollbar({
         suppressScrollX: true
     });
@@ -179,6 +180,11 @@ $(function () {
     $('.rightside-navigation').height(righttnav).perfectScrollbar({
         suppressScrollX: true
     });
+
+    //var recentgamesHeigth = window.innerHeight - leftnavHeight;
+  
+
+
 
 
     // Fullscreen

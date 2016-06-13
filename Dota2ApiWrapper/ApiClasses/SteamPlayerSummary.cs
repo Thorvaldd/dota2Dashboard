@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Dota2ApiWrapper.Converters;
 using Dota2ApiWrapper.Enums;
+using Dota2ApiWrapper.Results;
 using Newtonsoft.Json;
 
 namespace Dota2ApiWrapper.ApiClasses
@@ -9,7 +10,7 @@ namespace Dota2ApiWrapper.ApiClasses
     public class SteamPlayerSummary
     {
         #region Private
-        private long _steamId;
+        private string _steamId;
         private CommunityVisibilityState _communityVisibilityState;
         private string _profileState;
         private string _displayName;
@@ -25,6 +26,7 @@ namespace Dota2ApiWrapper.ApiClasses
         public SteamPlayerSummary()
         {
             RecentlyPlayedGames = new List<RecentlyPlayedGames>();
+            MatchHistory = new List<MatchHistoryResult>();
         }
 
         [JsonProperty("avatarfull")]
@@ -90,7 +92,7 @@ namespace Dota2ApiWrapper.ApiClasses
         }
 
         [JsonProperty("steamid")]
-        public long SteamId
+        public string SteamId
         {
             get { return _steamId; }
             set { _steamId = value; }
@@ -113,6 +115,8 @@ namespace Dota2ApiWrapper.ApiClasses
 
 
         public List<RecentlyPlayedGames> RecentlyPlayedGames { get; set; }
+
+        public List<MatchHistoryResult> MatchHistory { get; set; }
 
     }
 }

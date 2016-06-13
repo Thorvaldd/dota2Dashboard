@@ -79,6 +79,7 @@
     <Compile Include="ApiHandler.cs" />
     <Compile Include="Converters\ApplicationImageConverter.cs" />
     <Compile Include="Converters\DetailMatchFactionConverter.cs" />
+    <Compile Include="Converters\MinuteDateTimeConverter.cs" />
     <Compile Include="Converters\NumberToEnumConverter.cs" />
     <Compile Include="Converters\PlayerSlotFactionConverter.cs" />
     <Compile Include="Converters\StringUriConverter.cs" />

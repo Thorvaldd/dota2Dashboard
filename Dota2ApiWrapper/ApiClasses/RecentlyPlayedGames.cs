@@ -1,4 +1,5 @@
-﻿using Dota2ApiWrapper.Converters;
+﻿using System;
+using Dota2ApiWrapper.Converters;
 using Newtonsoft.Json;
 
 namespace Dota2ApiWrapper.ApiClasses
@@ -8,6 +9,7 @@ namespace Dota2ApiWrapper.ApiClasses
         #region properties
 
         private string _programIconUrl;
+        private string _programLogoUrl;
         #endregion
 
         /// <summary>
@@ -26,7 +28,8 @@ namespace Dota2ApiWrapper.ApiClasses
         /// An integer of the the player's total playtime, denoted in minutes.
         /// </summary>
         [JsonProperty("playtime_forever")]
-        public int TotalPLayTime { get; set; }
+        [JsonConverter(typeof(MinuteDateTimeConverter))]
+        public string TotalPLayTime { get; set; }
 
         /// <summary>
         /// The program icon's file name, accessible at: http://media.steampowered.com/steamcommunity/public/images/apps/APPID/IMG_ICON_URL.jpg, 
@@ -41,7 +44,9 @@ namespace Dota2ApiWrapper.ApiClasses
         }
 
         [JsonProperty("img_logo_url")]
-        public string ProgramLogoUrl { get; set; }
+        public string ProgramLogoUrl { get { return $"http://media.steampowered.com/steamcommunity/public/images/apps/{ApplicationId}/{_programLogoUrl}.jpg"; }
+            set { _programLogoUrl = value; }
+        }
 
     }
 }
