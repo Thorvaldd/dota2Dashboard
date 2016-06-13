@@ -28,5 +28,10 @@ namespace Dota2ApiWrapper.ApiClasses
         {
             get { return _accountId == ANONYMOUS; }
         }
+
+        public long AccountId64
+        {
+            get { return AccountId + 76561197960265728; }
+        }
     }
 }

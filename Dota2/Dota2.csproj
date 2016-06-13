@@ -316,9 +316,7 @@
     <Content Include="Views\Stats\Partials\StatsPartial.cshtml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\Dota2ApiWrapper\Dota2ApiWrapper.csproj">
       <Project>{e019648d-97b3-409f-800a-54e17a79c22b}</Project>

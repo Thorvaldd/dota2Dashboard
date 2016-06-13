@@ -260,9 +260,9 @@ namespace Dota2ApiWrapper
 
                 return apiResult.Result;
             }
-            catch (Exception)
+            catch (Exception e)
             {
-                throw;
+                return new MatchHistoryResult();
             }
         }
 
