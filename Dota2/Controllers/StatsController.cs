@@ -13,11 +13,16 @@ namespace Dota2.Controllers
             return View();
         }
 
-        public async Task<JsonResult> GetUserInfo(string userName)
+        public async Task<JsonResult> GetUserInfo(string nickName)
         {
             var api = new Dota2Results();
 
-            var result = await api.GetUserInfoByNick(userName);
+            var result = await api.GetUserInfoByNick(nickName);
+            var recentgames = await api.GetRecentGamesByUserId(result.SteamId.ToString());
+            if (recentgames.RecentlyPlayedGames.Count > 0)
+            {
+                result.RecentlyPlayedGames.AddRange(recentgames.RecentlyPlayedGames);
+            }
             return Json(result, JsonRequestBehavior.AllowGet);
         }
 

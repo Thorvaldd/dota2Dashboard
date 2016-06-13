@@ -1,8 +1,10 @@
 ﻿using Dota2ApiWrapper;
 using System.Configuration;
+using System.Linq;
 using System.Threading.Tasks;
 using Dota2ApiWrapper.ApiClasses;
 using Dota2ApiWrapper.Enums;
+using Dota2ApiWrapper.Results;
 using ViewModels;
 using WebApiRepository.Mappers.ApiMappers;
 
@@ -45,8 +47,19 @@ namespace WebApiRepository.Implementations.ApiRequests
 
         public async Task<SteamPlayerSummary> GetUserInfoByNick(string nickName)
         {
-            var user = await _api.GetUserInfoByNickName(nickName);
-            return user;
+            if (nickName.Any(char.IsDigit))
+            {
+                var byId = await _api.GetPlayerSummary(new[] {nickName});
+                return byId.Players?.First();
+            }
+            var byNick = await _api.GetUserInfoByNickName(nickName);
+            return byNick;
+        }
+
+        public async Task<RecentlyPlayedGamesResult> GetRecentGamesByUserId(string id, int? count = null)
+        {
+            var recentGames = await _api.GetRecentlyPlayedGames(id, count);
+            return recentGames;
         }
     }
 }

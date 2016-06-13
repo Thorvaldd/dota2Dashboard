@@ -231,7 +231,7 @@
     <Content Include="Content\img\favicon.png" />
     <Content Include="Content\img\ios-desktop.png" />
     <Content Include="Content\img\user.jpg" />
-    <Content Include="favicon.ico" />
+    <Content Include="d2.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
@@ -289,6 +289,9 @@
     <Content Include="Scripts\pages\stats.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="Scripts\libs\sammy-0.7.5.js" />
+    <Content Include="Scripts\libs\sammy-0.7.5.min.js" />
+    <Content Include="Scripts\routing.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
