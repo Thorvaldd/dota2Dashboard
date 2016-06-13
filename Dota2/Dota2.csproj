@@ -283,6 +283,7 @@
     <Content Include="Scripts\libs\materialize\plugins\sparkline\jquery.sparkline.min.js" />
     <Content Include="Scripts\libs\materialize\plugins\sparkline\sparkline-script.js" />
     <Content Include="Scripts\libs\snackbar.js" />
+    <Content Include="Scripts\menu.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\pages\heroes.js" />
     <Content Include="Scripts\pages\stats.js" />
@@ -312,9 +313,7 @@
     <Content Include="Views\Stats\Partials\StatsPartial.cshtml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_Data\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\Dota2ApiWrapper\Dota2ApiWrapper.csproj">
       <Project>{e019648d-97b3-409f-800a-54e17a79c22b}</Project>
