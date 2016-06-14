@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using System.Web.DynamicData;
 using System.Web.Mvc;
 using WebApiRepository.Implementations.ApiRequests;
 
@@ -18,17 +19,24 @@ namespace Dota2.Controllers
 
             var result = await api.GetUserInfoByNick(nickName);
             var recentgames = await api.GetRecentGamesByUserId(result.SteamId);
-            var matchHistory = await api.GetMatchHistory(result.SteamId);
-
+           // var matchHistory = await api.GetMatchHistory(result.SteamId);
             if (recentgames.RecentlyPlayedGames.Count > 0)
             {
-                result.RecentlyPlayedGames?.AddRange(recentgames.RecentlyPlayedGames);
+                result.RecentlyPlayedGames.AddRange(recentgames.RecentlyPlayedGames);
             }
-            if (matchHistory.Matches?.Count > 0)
-            {
-                result.MatchHistory.Add(matchHistory);
-            }
+            //if (matchHistory.Matches?.Count > 0)
+            //{
+            //    result.MatchHistory.Add(matchHistory);
+            //}
             return Json(result, JsonRequestBehavior.AllowGet);
+        }
+
+        public async Task<JsonResult> GetMatchHistor(string accountId)
+        {
+            var api = new Dota2Results();
+            var history = await api.GetMatchHistory(accountId);
+
+            return Json(history, JsonRequestBehavior.AllowGet);
         }
 
         public PartialViewResult GetStatsPartial()

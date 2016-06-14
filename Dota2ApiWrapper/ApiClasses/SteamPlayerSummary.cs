@@ -26,7 +26,6 @@ namespace Dota2ApiWrapper.ApiClasses
         public SteamPlayerSummary()
         {
             RecentlyPlayedGames = new List<RecentlyPlayedGames>();
-            MatchHistory = new List<MatchHistoryResult>();
         }
 
         [JsonProperty("avatarfull")]
@@ -113,10 +112,6 @@ namespace Dota2ApiWrapper.ApiClasses
             set { _locationCountryCode = value; }
         }
 
-
         public List<RecentlyPlayedGames> RecentlyPlayedGames { get; set; }
-
-        public List<MatchHistoryResult> MatchHistory { get; set; }
-
     }
 }

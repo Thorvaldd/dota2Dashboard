@@ -28,7 +28,7 @@ function initThead() {
 
      
     }
-    $('table').floatThead({
+    $('.float-thead-table').floatThead({
         position: 'fixed',
         top: 65
     });

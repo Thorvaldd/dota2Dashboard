@@ -3,6 +3,7 @@ function ViewModel() {
     var self = this;
     this.UserInfo = ko.mapping.fromJS([]);
     self.nick = ko.observable();
+    self.Games = ko.observableArray([]);
 
     self.updateScrollBar = function () {
         var $container = $('#recent-games');
@@ -18,8 +19,16 @@ function ViewModel() {
         $.get('/Stats/GetUserInfo?nickName=' + ko.toJS(form.nick), function (result) {
             self.UserInfo([]);
             self.UserInfo.push(ko.mapping.fromJS(result));
-            console.log(ko.toJS(self.UserInfo));
             bindScrollBar();
+        });
+    }
+
+    self.getRecentGames = function (rootModel, currentModel, event) {
+        $.get('/Stats/GetMatchHistor?accountId=' + rootModel.SteamId(), function (result) {
+            self.Games(result.Matches.map(function(match) {
+                var model = new GamesModel(match);
+                return model;
+            }));
         });
     }
 
@@ -30,6 +39,20 @@ function ViewModel() {
         });
     }
 
+   
+}
+
+function GamesModel(param) {
+    var self = this;
+    self.MatchId = ko.observable();
+    self.Players = ko.observable();
+    self.LobbyType = ko.observable();
+
+    if (param != undefined) {
+        self.MatchId(param.MatchId);
+        self.Players(param.Players.length);
+        self.LobbyType(param.LobbyType);
+    }
    
 }
 
