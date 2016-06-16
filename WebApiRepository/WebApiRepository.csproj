@@ -50,6 +50,8 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Web" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -58,6 +60,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AppConstants\CacheTitles.cs" />
+    <Compile Include="Implementations\DotaBuffParser\DotaBuffParser.cs" />
+    <Compile Include="Implementations\DotaBuffParser\JsonClasses\Enums.cs" />
+    <Compile Include="Implementations\DotaBuffParser\JsonClasses\Items.cs" />
+    <Compile Include="Implementations\DotaBuffParser\Results\EnumItemsResult.cs" />
     <Compile Include="Implementations\RepositoryRequests\Dota2HeroesService.cs" />
     <Compile Include="Interfaces\IDota2HeroesService.cs" />
     <Compile Include="Mappers\ModelMappers\HeroesMapper.cs" />
@@ -69,7 +76,20 @@
     <Compile Include="Migrations\201606101051014_rename_column_HeroesImages_CloudinaryUrl.Designer.cs">
       <DependentUpon>201606101051014_rename_column_HeroesImages_CloudinaryUrl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201606161103479_NewTable_GameItems.cs" />
+    <Compile Include="Migrations\201606161103479_NewTable_GameItems.Designer.cs">
+      <DependentUpon>201606161103479_NewTable_GameItems.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201606161143307_Rename.cs" />
+    <Compile Include="Migrations\201606161143307_Rename.Designer.cs">
+      <DependentUpon>201606161143307_Rename.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201606161150374_NewField_IsRecipe_In_GameItems.cs" />
+    <Compile Include="Migrations\201606161150374_NewField_IsRecipe_In_GameItems.Designer.cs">
+      <DependentUpon>201606161150374_NewField_IsRecipe_In_GameItems.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\GameItems.cs" />
     <Compile Include="Repository\GenericRepository.cs" />
     <Compile Include="Implementations\ApiRequests\Dota2Results.cs" />
     <Compile Include="Mappers\ApiMappers\HeroesMapper.cs" />
@@ -86,6 +106,10 @@
       <Project>{E019648D-97B3-409F-800A-54E17A79C22B}</Project>
       <Name>Dota2ApiWrapper</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DotaBuffWrapper\DotaBuffWrapper.csproj">
+      <Project>{d26562c5-9409-491a-a0e1-06e96d6c7b41}</Project>
+      <Name>DotaBuffWrapper</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ViewModels\ViewModels.csproj">
       <Project>{3C0479EE-A917-44DC-9C16-C9AD76AAA7C6}</Project>
       <Name>ViewModels</Name>
@@ -95,7 +119,9 @@
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
-    <None Include="packages.config" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201606101049093_remove_blob_HeroImages.resx">
@@ -103,6 +129,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201606101051014_rename_column_HeroesImages_CloudinaryUrl.resx">
       <DependentUpon>201606101051014_rename_column_HeroesImages_CloudinaryUrl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606161103479_NewTable_GameItems.resx">
+      <DependentUpon>201606161103479_NewTable_GameItems.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606161143307_Rename.resx">
+      <DependentUpon>201606161143307_Rename.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201606161150374_NewField_IsRecipe_In_GameItems.resx">
+      <DependentUpon>201606161150374_NewField_IsRecipe_In_GameItems.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

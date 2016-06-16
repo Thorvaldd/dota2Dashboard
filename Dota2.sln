@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ViewModels", "ViewModels\Vi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Dota2ApiWrapper", "Dota2ApiWrapper\Dota2ApiWrapper.csproj", "{E019648D-97B3-409F-800A-54E17A79C22B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DotaBuffWrapper", "DotaBuffWrapper\DotaBuffWrapper.csproj", "{D26562C5-9409-491A-A0E1-06E96D6C7B41}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{E019648D-97B3-409F-800A-54E17A79C22B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E019648D-97B3-409F-800A-54E17A79C22B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E019648D-97B3-409F-800A-54E17A79C22B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D26562C5-9409-491A-A0E1-06E96D6C7B41}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D26562C5-9409-491A-A0E1-06E96D6C7B41}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D26562C5-9409-491A-A0E1-06E96D6C7B41}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D26562C5-9409-491A-A0E1-06E96D6C7B41}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

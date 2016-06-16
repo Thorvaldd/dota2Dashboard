@@ -46,12 +46,12 @@ function GamesModel(param) {
     var self = this;
     self.MatchId = ko.observable();
     self.Players = ko.observable();
-    self.LobbyType = ko.observable();
+    self.LobbyTypeDescription = ko.observable();
 
     if (param != undefined) {
         self.MatchId(param.MatchId);
         self.Players(param.Players.length);
-        self.LobbyType(param.LobbyType);
+        self.LobbyTypeDescription(param.LobbyTypeDescription);
     }
    
 }

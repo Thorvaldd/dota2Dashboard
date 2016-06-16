@@ -36,7 +36,7 @@
 
         <div class="col s12 m7 15">
             <div class="card">
-                <table>
+                <table class="centered">
                     <thead>
                     <tr>
                         <th>Match ID</th>
@@ -49,8 +49,10 @@
                     </thead>
                     <tbody data-bind="foreach: Games">
                         <tr>
-                            <td data-bind="text: MatchId"></td>
-                            <td data-bind="text: LobbyType"></td>
+                            <td >
+                                <a data-bind="attr:{href: 'http://www.dotabuff.com/matches/'+ MatchId()}, text: MatchId"></a>
+                            </td>
+                            <td data-bind="text: LobbyTypeDescription"></td>
                             <td data-bind="text: Players"></td>
                             <td></td>
                             <td></td>

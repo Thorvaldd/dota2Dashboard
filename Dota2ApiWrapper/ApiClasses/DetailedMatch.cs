@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Dota2ApiWrapper.Converters;
 using Dota2ApiWrapper.Enums;
+using Dota2ApiWrapper.Helpers;
 using Newtonsoft.Json;
 
 namespace Dota2ApiWrapper.ApiClasses
@@ -168,6 +169,12 @@ namespace Dota2ApiWrapper.ApiClasses
         {
             get { return _barracksRadiant; }
             set { _barracksRadiant = value; }
+        }
+
+
+        public string GameModeDescription
+        {
+            get { return GameMode.GetEunumDescription(); }
         }
     }
 }

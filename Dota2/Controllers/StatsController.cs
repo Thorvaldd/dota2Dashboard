@@ -2,6 +2,7 @@
 using System.Web.DynamicData;
 using System.Web.Mvc;
 using WebApiRepository.Implementations.ApiRequests;
+using WebApiRepository.Implementations.DotaBuffParser;
 
 namespace Dota2.Controllers
 {
@@ -16,18 +17,18 @@ namespace Dota2.Controllers
         public async Task<JsonResult> GetUserInfo(string nickName)
         {
             var api = new Dota2Results();
+            var dbuf = new DotaBuffParser();
 
             var result = await api.GetUserInfoByNick(nickName);
             var recentgames = await api.GetRecentGamesByUserId(result.SteamId);
-           // var matchHistory = await api.GetMatchHistory(result.SteamId);
+
+            dbuf.UpdateItemsEnum();
+        //    var pInfo = dbuf.GetPlayerInfo(result.SteamId);
             if (recentgames.RecentlyPlayedGames.Count > 0)
             {
                 result.RecentlyPlayedGames.AddRange(recentgames.RecentlyPlayedGames);
             }
-            //if (matchHistory.Matches?.Count > 0)
-            //{
-            //    result.MatchHistory.Add(matchHistory);
-            //}
+          
             return Json(result, JsonRequestBehavior.AllowGet);
         }
 
@@ -35,6 +36,8 @@ namespace Dota2.Controllers
         {
             var api = new Dota2Results();
             var history = await api.GetMatchHistory(accountId);
+
+
 
             return Json(history, JsonRequestBehavior.AllowGet);
         }

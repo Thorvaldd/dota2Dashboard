@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Data.Entity;
+using WebApiRepository;
 
 namespace Dota2Import
 {
@@ -12,14 +14,17 @@ namespace Dota2Import
         {
             try
             {
+                Database.SetInitializer<ApplicationContext>(null);
                 // ImportDota2Entities.ImportHeroes();
                 //  ImportDota2Entities.ImportSmallHeroIcons();
-                var img = new ImageConverting();
-
+              
+                //  var img = new ImageConverting();
                // img.SaveSmallImagesToDirectory();
               //  img.UploadImagesToCloudinary();
 
-                img.SaveUploadedImagesUrlToDb();
+              //  img.SaveUploadedImagesUrlToDb();
+
+                ImportDota2Entities.ImportDotaItems();
 
                 Console.ReadLine();
             }

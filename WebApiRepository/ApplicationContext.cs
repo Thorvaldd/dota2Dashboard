@@ -11,6 +11,8 @@ namespace WebApiRepository
 
         public DbSet<HeroesImages> HeroImage { get; set; }
 
+        public DbSet<GameItems> GameItems { get; set; }
+
         protected override void OnModelCreating(DbModelBuilder mdb)
         {
             mdb.Entity<HeroesImages>()
@@ -19,6 +21,9 @@ namespace WebApiRepository
             mdb.Entity<Heroes>()
                 .HasRequired(s => s.HeroImage)
                 .WithRequiredPrincipal(s => s.Heroes);
+
+            mdb.Entity<GameItems>()
+                .HasKey(e => e.Id);
         }
     }
 }
