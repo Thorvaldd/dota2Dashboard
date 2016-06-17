@@ -8,6 +8,15 @@ namespace Dota2.Controllers
 {
     public class StatsController : Controller
     {
+        private readonly Dota2Results _api;
+        private readonly DotaBuffParser _dotaBuff;
+
+        public StatsController(DotaBuffParser dotaBuff, Dota2Results api)
+        {
+            _dotaBuff = dotaBuff;
+            _api = api;
+        }
+
         // GET: Stats
         public ActionResult Index()
         {
@@ -16,19 +25,10 @@ namespace Dota2.Controllers
 
         public async Task<JsonResult> GetUserInfo(string nickName)
         {
-            var api = new Dota2Results();
-            var dbuf = new DotaBuffParser();
+            var result = await _api.GetUserInfoByNick(nickName);
+            var games = _dotaBuff.GetPlayerInfo(result.SteamId);
+            result.RecentlyPlayedGames.AddRange(games);
 
-            var result = await api.GetUserInfoByNick(nickName);
-            var recentgames = await api.GetRecentGamesByUserId(result.SteamId);
-
-            dbuf.UpdateItemsEnum();
-        //    var pInfo = dbuf.GetPlayerInfo(result.SteamId);
-            if (recentgames.RecentlyPlayedGames.Count > 0)
-            {
-                result.RecentlyPlayedGames.AddRange(recentgames.RecentlyPlayedGames);
-            }
-          
             return Json(result, JsonRequestBehavior.AllowGet);
         }
 

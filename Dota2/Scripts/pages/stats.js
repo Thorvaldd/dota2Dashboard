@@ -17,6 +17,7 @@ function ViewModel() {
 
     self.getUserInfo = function (form) {
         $.get('/Stats/GetUserInfo?nickName=' + ko.toJS(form.nick), function (result) {
+            debugger;
             self.UserInfo([]);
             self.UserInfo.push(ko.mapping.fromJS(result));
             bindScrollBar();

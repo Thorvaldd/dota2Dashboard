@@ -27,10 +27,6 @@ namespace WebApiRepository.Implementations.DotaBuffParser
 
         public void UpdateItemsEnum()
         {
-            //using (var db = new ApplicationContext())
-            //{
-
-            //}
             var version = Assembly.GetExecutingAssembly().GetName().Version.ToString();
             var parsingWebsite = ParsingWebsites.Dotabuff;
             var enumPath = string.Format(@"Mapping\{0}\{1}\Enums.json", parsingWebsite, version);
@@ -40,8 +36,6 @@ namespace WebApiRepository.Implementations.DotaBuffParser
             var jsonString = File.ReadAllText(fullEnumPath);
             var joobj = JObject.Parse(jsonString);
             var items = (JObject)joobj["Enums"]["Items"];
-            //var mapItems = items.Properties()
-            //    .ToDictionary(p => p.Name, p => p.Value.ToObject<JsonClasses.Items>()).OrderBy(x=>x.Key).ToDictionary(x=>x.Key, x=>x.Value);
 
             var mapItems = new Dictionary<string, JsonClasses.Items>();
 
@@ -49,29 +43,46 @@ namespace WebApiRepository.Implementations.DotaBuffParser
             using (var db = new ApplicationContext())
             {
                 var allItems = db.GameItems.ToList();
+
+               // if(allItems.Count > items.Count)
+
                 foreach (var newItem in allItems)
                 {
-                    var trimmed = newItem.LocalizedName.Replace("Recipe:","").Replace(" ", "");
+                    var trimmed = newItem.LocalizedName.Replace(" ", "").Replace("Recipe:","");
                     if (!mapItems.ContainsKey(trimmed))
                     {
                         if (newItem.IsRecipe)
                         {
-                            var removeRecipe = newItem.LocalizedName.Replace("Recipe:","").TrimStart();
+                            var removeRecipe = newItem.LocalizedName.Replace(":","").Replace(" ","");
                             mapItems.Add(removeRecipe, new JsonClasses.Items
                             {
-                                DotaBuff = newItem.LocalizedName.Replace("Recipe:", "").Replace(" ", "-").ToLower(),
-                                Parser = newItem.LocalizedName.Replace("Recipe:", "").Replace(" ", ""),
-                                Name = newItem.LocalizedName.Replace("Recipe:","")
+                                DotaBuff = newItem.LocalizedName.Replace(":","").Replace(' ', '-').ToLower(),
+                                Parser = newItem.LocalizedName.Replace(":", "").Replace(" ", ""),
+                                Name = newItem.LocalizedName.Replace(":"," ").TrimStart()
                             });
                         }
-                        mapItems.Add(newItem.LocalizedName.Replace(" ", ""), new JsonClasses.Items
+                        mapItems.Add(newItem.LocalizedName.Replace(" ", "").Replace("Recipe:",""), new JsonClasses.Items
                         {
-                            DotaBuff =  newItem.LocalizedName.Replace(" ", "-").ToLower(),
-                            Parser =  newItem.LocalizedName.Replace(" ", ""),
-                            Name = newItem.LocalizedName
+                            DotaBuff =  newItem.LocalizedName.Replace("Recipe:","").TrimStart().Replace(" ", "-").ToLower(),
+                            Parser =  newItem.LocalizedName.Replace("Recipe:", "").TrimStart().Replace(" ", ""),
+                            Name = newItem.LocalizedName.Replace("Recipe:", "").TrimStart()
 
                         });
 
+                    }
+
+                   
+                }
+                if (mapItems.ContainsKey("Necronomicon"))
+                {
+                    for (int i = 2; i > 0; i--)
+                    {
+                        mapItems.Add("NecronomiconLevel" + (i + 1), new JsonClasses.Items
+                        {
+                            DotaBuff = "necronomicon-level-" + (i + 1),
+                            Parser = "NecronomiconLevel" + (i + 1),
+                            Name = "Necronomicon (level " + (i + 1) + " )"
+                        });
                     }
                 }
             }
@@ -80,14 +91,11 @@ namespace WebApiRepository.Implementations.DotaBuffParser
 
             foreach (var map in mapItems)
             {
-                items.Add(map.Key, JsonConvert.SerializeObject(map.Value));
+                var jToken = JToken.FromObject(map.Value);
+                items.Add(map.Key, jToken);
             }
 
-            joobj["Enums"]["Items"].Parent.Remove();
-            var newProperty = new JProperty("Items", items);
-            joobj["Enums"].AddAfterSelf(newProperty.ToString());
-
-            File.WriteAllText(fullEnumPath, joobj.ToString().Replace(@"\"," "));
+            File.WriteAllText(fullEnumPath, joobj.ToString());
 
 
 

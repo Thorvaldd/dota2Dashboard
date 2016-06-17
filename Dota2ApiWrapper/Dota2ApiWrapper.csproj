@@ -119,7 +119,12 @@
     <Compile Include="Results\SteamPlayerSummaryResult.cs" />
     <Compile Include="Results\TournamentPrizePoolResult.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\DotaBuffWrapper\DotaBuffWrapper.csproj">
+      <Project>{D26562C5-9409-491A-A0E1-06E96D6C7B41}</Project>
+      <Name>DotaBuffWrapper</Name>
+    </ProjectReference>
+  </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />

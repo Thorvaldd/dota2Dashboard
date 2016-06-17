@@ -59,8 +59,11 @@ namespace DotaBuffWrapper.Controller.Dotabuff
 
         internal Item GetItem(string itemReference)
         {
-            if (mappedItems.Any(h => h.Reference == itemReference))
-                return mappedItems.Find(h => h.Reference == itemReference);
+            //var itemFind = itemReference.Replace("-", " ").Split(' ');
+            //var item = itemFind.Aggregate("", (current, word) => current + word.Substring(0, 1).ToUpper() + word.Substring(1, word.Length - 1) + " ").TrimEnd();
+
+            if (mappedItems.OrderBy(x=>x.Name).Any(h => h.Reference.Replace("\'", "").Contains(itemReference)))
+                return mappedItems.Find(h => h.Reference.Contains(itemReference));
 
             if (itemReference.Contains("recipe")) {
 

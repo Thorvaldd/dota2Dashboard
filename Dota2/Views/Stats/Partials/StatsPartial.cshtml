@@ -85,15 +85,11 @@
         </span>
         <div class="row">
             <div class="col s14 m14 14">
-                <ul class="collection" data-bind="foreach: RecentlyPlayedGames">
+                @*<ul class="collection" data-bind="foreach: RecentlyPlayedGames">
                     <li class="collection-item">
                         <div class="row">
                             <div class="col s4">
                                 <p class="collections-title grey-text text-darken-4" data-bind="text: Name"></p>
-                                @*<ul data-bind="foreach: $parent.MatchHistory()[0].Matches()[0].Players">
-                                    <li data-bind="text: '32' + '-' + AccountId()"></li>
-                                    <li data-bind="text: '64' + '-' + AccountId64()"></li>
-                                </ul>*@
                             </div>
                             <div class="col s6">
                                 <a data-bind="click: $root.getRecentGames.bind($data, $parent)">
@@ -102,7 +98,7 @@
                             </div>
                         </div>
                     </li>
-                </ul>
+                </ul>*@
             </div>
         </div>
 

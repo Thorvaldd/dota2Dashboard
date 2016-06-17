@@ -10,6 +10,7 @@ namespace DotaBuffWrapper.Controller.Dotabuff
     internal class MatchController
     {
         private MainController mainController;
+        private AbilityController abilityController;
 
         private dynamic PlayerPath { get { return mainController.DotabuffMappingController.PlayerPath; } }
         private dynamic HtmlAttributes { get { return mainController.DotabuffMappingController.HtmlAttributes; } }
@@ -17,6 +18,7 @@ namespace DotaBuffWrapper.Controller.Dotabuff
         internal MatchController(MainController mainController)
         {
             this.mainController = mainController;
+            this.abilityController = new AbilityController(mainController);
         }
 
         internal List<Match> FetchLatestMatches(string playerId)

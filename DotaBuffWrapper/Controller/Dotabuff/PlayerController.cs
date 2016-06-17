@@ -111,7 +111,7 @@ namespace DotaBuffWrapper.Controller.Dotabuff
                 TimeAgo = PlayerMatchesPath.TimeAgo.Value,
                 Type = PlayerMatchesPath.Type.Value,
                 IdAttribute = HtmlAttributes.PlayerMatches.Attribute.Value,
-                IdReplace = HtmlAttributes.PlayerMatches.Replace.Value
+                IdReplace = HtmlAttributes.PlayerMatches.Replace.Value,
             };
 
             int counter = 1;
