@@ -41,9 +41,13 @@
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="HtmlAgilityPack, Version=1.4.9.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
+      <HintPath>..\packages\HtmlAgilityPack.1.4.9\lib\Net45\HtmlAgilityPack.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.VisualBasic" />
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\packages\Newtonsoft.Json.6.0.8\lib\net45\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.8.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -85,6 +89,10 @@
     <ProjectReference Include="..\Dota2ApiWrapper\Dota2ApiWrapper.csproj">
       <Project>{E019648D-97B3-409F-800A-54E17A79C22B}</Project>
       <Name>Dota2ApiWrapper</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DotabuffWrapper\DotabuffWrapper.csproj">
+      <Project>{6349D183-6FEE-46F6-B79F-31642706A876}</Project>
+      <Name>DotabuffWrapper</Name>
     </ProjectReference>
     <ProjectReference Include="..\ViewModels\ViewModels.csproj">
       <Project>{3C0479EE-A917-44DC-9C16-C9AD76AAA7C6}</Project>

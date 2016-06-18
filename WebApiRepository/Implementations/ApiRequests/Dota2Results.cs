@@ -7,6 +7,8 @@ using Dota2ApiWrapper.Enums;
 using Dota2ApiWrapper.Results;
 using ViewModels;
 using WebApiRepository.Mappers.ApiMappers;
+using DotabuffWrapper;
+using DotabuffWrapper.Model.Dotabuff;
 
 namespace WebApiRepository.Implementations.ApiRequests
 {
@@ -59,15 +61,20 @@ namespace WebApiRepository.Implementations.ApiRequests
         public async Task<RecentlyPlayedGamesResult> GetRecentGamesByUserId(string id, int? count = null)
         {
             var recentGames = await _api.GetRecentlyPlayedGames(id, count);
+
+            using (var dbuff = new Dataparser())
+            {
+                var matchHistory = dbuff.GetPlayerMatchesPageData(id, new PlayerMatchesOptions());
+            }
             return recentGames;
         }
 
         public async Task<MatchHistoryResult> GetMatchHistory(string accountId)
         {
             var account32bit = (long.Parse(accountId) - 76561197960265728).ToString();
-            var history = await _api.GetMatchHistory(accountId: account32bit, matchesRequested:"20");
-
-            return history;
+            //var history = await _api.GetMatchHistory(accountId: account32bit, matchesRequested:"20");
+           
+            return new MatchHistoryResult();
         }
     }
 }

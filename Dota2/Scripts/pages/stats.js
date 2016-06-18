@@ -18,7 +18,6 @@ function ViewModel() {
         $.get('/Stats/GetUserInfo?nickName=' + ko.toJS(form.nick), function (result) {
             self.UserInfo([]);
             self.UserInfo.push(ko.mapping.fromJS(result));
-            console.log(ko.toJS(self.UserInfo));
             bindScrollBar();
         });
     }
