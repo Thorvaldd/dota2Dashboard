@@ -4,6 +4,7 @@ using Dota2ApiWrapper.Converters;
 using Dota2ApiWrapper.Enums;
 using Dota2ApiWrapper.Results;
 using Newtonsoft.Json;
+using DotaBuffWrapper.Model.Dotabuff.Interfaces;
 
 namespace Dota2ApiWrapper.ApiClasses
 {
@@ -25,7 +26,7 @@ namespace Dota2ApiWrapper.ApiClasses
 
         public SteamPlayerSummary()
         {
-            RecentlyPlayedGames = new List<RecentlyPlayedGames>();
+            RecentlyPlayedGames = new List<IMatchExtended>();
         }
 
         [JsonProperty("avatarfull")]
@@ -112,7 +113,6 @@ namespace Dota2ApiWrapper.ApiClasses
             set { _locationCountryCode = value; }
         }
 
-        public List<RecentlyPlayedGames> RecentlyPlayedGames { get; set; }
-
+        public List<IMatchExtended> RecentlyPlayedGames { get; set; }
     }
 }

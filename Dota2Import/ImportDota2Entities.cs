@@ -2,6 +2,7 @@
 using System.Linq;
 using WebApiRepository;
 using WebApiRepository.Implementations.ApiRequests;
+using WebApiRepository.Models;
 
 namespace Dota2Import
 {
@@ -55,6 +56,31 @@ namespace Dota2Import
                 db.SaveChanges();
             }
 
+        }
+
+
+        public static async void ImportDotaItems()
+        {
+            var apiItems = new Dota2Results();
+            var items = await apiItems.GetItems();
+            using (var db = new ApplicationContext())
+            {
+                foreach (var item in items)
+                {
+                    var newItems = new GameItems
+                    {
+                        Id = item.Id,
+                        Cost = item.Cost,
+                        LocalizedName = item.LocalizedName,
+                        DotaBuffItemName = item.LocalizedName.ToLower().Replace(" ","-"),
+                        IsRecipe = item.IsRecipe
+                    };
+                    Console.WriteLine("Adding ->{0}", item.LocalizedName);
+                    db.GameItems.Add(newItems);
+                }
+
+                db.SaveChanges();
+            }
         }
     }
 }

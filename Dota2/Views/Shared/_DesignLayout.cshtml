@@ -185,10 +185,13 @@
                         </a>
                     </li>
                     <li class="bold @Html.IsActive(actions: "Index", controllers: "Stats")">
-                        <a href="@Url.Action("GetStatsPartial", "Stats")" data-get="stats"  class="waves-effect waves-ripple">
+                        <a href="@Url.Action("GetStatsPartial", "Stats")" data-get="stats" class="waves-effect waves-ripple">
                             <i class="mdi-device-now-widgets"></i>
                             Game statistic
                         </a>
+                    </li>
+                    <li>
+                        <a class="waves-effect waves-ripple">Call web API</a>
                     </li>
 
                 </ul>

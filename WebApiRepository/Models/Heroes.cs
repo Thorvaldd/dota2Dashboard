@@ -5,13 +5,13 @@ namespace WebApiRepository.Models
     [Table("Heroes")]
     public class Heroes
     {
-        [Column(name: "id")]
+        [Column(name: "Id")]
         public int Id { get; set; }
 
-        [Column(name:"name")]
+        [Column(name:"Name")]
         public string Name { get; set; }
 
-        [Column(name:"valveheroname")]
+        [Column(name:"ValveHeroName")]
         public string ValveHeroName { get; set; }
 
         public virtual HeroesImages HeroImage { get; set; }

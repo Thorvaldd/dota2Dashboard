@@ -7,7 +7,7 @@
 
                         <div class="row">
                             <div id="seach-field" class="input-field col s12">
-                                <input type="text" name="userName" id="search-input" data-bind="value: $data.nick" />
+                                <input type="text" name="userName" id="search-input" data-bind="value: $data.nick"/>
                                 <label for="search-input" class>User id</label>
                             </div>
                         </div>
@@ -28,13 +28,45 @@
 
     <div class="row">
         <div class="col s12 m8 l5">
-            <div class="card medium"  data-bind="template: {name: 'model-template', foreach:
+            <div class="card medium" data-bind="template: {name: 'model-template', foreach:
                      UserInfo}, visible: UserInfo().length">
 
             </div>
         </div>
+
+        <div class="col s12 m7 15">
+            <div class="card">
+                <table class="centered">
+                    <thead>
+                    <tr>
+                        <th>Match ID</th>
+                        <th>Game mode</th>
+                        <th>Result(count players)</th>
+                        <th>Duration</th>
+                        <th>Radiant Team</th>
+                        <th>Dire team</th>
+                    </tr>
+                    </thead>
+                    <tbody data-bind="foreach: Games">
+                        <tr>
+                            <td >
+                                <a data-bind="attr:{href: 'http://www.dotabuff.com/matches/'+ MatchId()}, text: MatchId"></a>
+                            </td>
+                            <td data-bind="text: LobbyTypeDescription"></td>
+                            <td data-bind="text: Players"></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
 </div>
+<script id="match-template" type="text/html">
+   
+</script>
 <script id="model-template" type="text/html">
     <div class="card-image ">
         <img data-bind="attr:{src: AvatarFullUri}" class="activator"/>
@@ -53,22 +85,20 @@
         </span>
         <div class="row">
             <div class="col s14 m14 14">
-                <ul class="collection" data-bind="foreach: RecentlyPlayedGames">
+                @*<ul class="collection" data-bind="foreach: RecentlyPlayedGames">
                     <li class="collection-item">
                         <div class="row">
                             <div class="col s4">
                                 <p class="collections-title grey-text text-darken-4" data-bind="text: Name"></p>
-                                @*<ul data-bind="foreach: $parent.MatchHistory()[0].Matches()[0].Players">
-                                    <li data-bind="text: '32' + '-' + AccountId()"></li>
-                                    <li data-bind="text: '64' + '-' + AccountId64()"></li>
-                                </ul>*@
                             </div>
                             <div class="col s6">
-                                <img data-bind="attr: {src: ProgramLogoUrl}" style="max-width: 160px" />
+                                <a data-bind="click: $root.getRecentGames.bind($data, $parent)">
+                                    <img data-bind="attr: {src: ProgramLogoUrl}" style="max-width: 160px" />
+                                </a>
                             </div>
                         </div>
                     </li>
-                </ul>
+                </ul>*@
             </div>
         </div>
 

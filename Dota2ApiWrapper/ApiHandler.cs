@@ -327,7 +327,7 @@ namespace Dota2ApiWrapper
             }
         }
 
-        public async Task<GetMatchHistoryBySequenceNumResult> GetMatchHistoryBySequenceNumber(string startAtMatchSeqNumber = null, int matchesRequested = -1)
+        public async Task<GetMatchHistoryBySequenceNumResult> GetMatchHistoryBySequenceNumber(string startAtMatchSeqNumber = null, int matchesRequested = -1, string accountid = null)
         {
             try
             {
@@ -338,6 +338,9 @@ namespace Dota2ApiWrapper
 
                 if (matchesRequested != -1)
                     extra.AppendFormat("{0}{1}", "&matches_requested=", matchesRequested);
+
+                if (!string.IsNullOrEmpty(accountid))
+                    extra.AppendFormat("{0}{1}", "&account_id=", accountid);
 
                 string queryString = QueryBuilder(BASE_ADDRESS, "IDOTA2Match_570/GetMatchHistoryBySequenceNum/v0001/", _keyString, extra.ToString());
                 string content = await GetStringAsync(queryString);
@@ -431,6 +434,30 @@ namespace Dota2ApiWrapper
             catch (Exception e)
             {
                 
+                throw;
+            }
+        }
+
+        public async Task<GameItemsResult> GetGameItems(string language = null)
+        {
+            try
+            {
+                var extra = new StringBuilder();
+
+                if (!string.IsNullOrEmpty(language))
+                    extra.AppendFormat("{0}{1}", "&language=", language);
+
+                var queryString = QueryBuilder(BASE_ADDRESS, "IEconDOTA2_570/GetGameItems/v0001/", _keyString, extra.ToString());
+
+                var content = await GetStringAsync(queryString);
+
+                var apiResult = JsonConvert.DeserializeObject<ApiResult<GameItemsResult>>(content);
+
+                return apiResult.Result;
+            }
+            catch (Exception e)
+            {
+                throw;
                 throw;
             }
         }
