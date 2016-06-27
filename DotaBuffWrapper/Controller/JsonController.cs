@@ -21,5 +21,12 @@ namespace DotaBuffWrapper.Controller
 
             return dynamicObject;
         }
+
+        internal dynamic ReadFromGithub(string filePath)
+        {
+            dynamic dynamicObject = "";
+
+            return dynamicObject;
+        }
     }
 }
