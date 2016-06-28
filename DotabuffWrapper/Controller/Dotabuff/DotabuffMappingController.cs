@@ -1,5 +1,7 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using DotaBuffWrapper.Model;
+using EasyGitHub.Entities;
 
 namespace DotaBuffWrapper.Controller.Dotabuff
 {
@@ -32,8 +34,15 @@ namespace DotaBuffWrapper.Controller.Dotabuff
         internal DotabuffMappingController(JsonPaths jsonPaths)
         {
             JsonController jsonReader = new JsonController();
+            GistClient gistClient = new GistClient();
 
-            dotabuffXPaths = jsonReader.ReadFromFile(jsonPaths.XPathsUri);
+
+            var gistFiles = gistClient.GetGist("ebaba232180a83083cd1d9a2d7db65da");
+
+
+            dotabuffXPaths = jsonReader.ReadFromString(gistFiles.Keys.First(x=>x == jsonPaths.XPathsUri));
+
+            //dotabuffXPaths = jsonReader.ReadFromFile(jsonPaths.XPathsUri);
             dotabuffQueryStrings = jsonReader.ReadFromFile(jsonPaths.QueryStringsUri);
             dotabuffEnums = jsonReader.ReadFromFile(jsonPaths.EnumsUri);
             dotabuffSelectors = jsonReader.ReadFromFile(jsonPaths.SelectorsUri);
