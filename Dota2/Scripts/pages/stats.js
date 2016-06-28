@@ -4,6 +4,7 @@ function ViewModel() {
     this.UserInfo = ko.mapping.fromJS([]);
     self.nick = ko.observable();
     self.Games = ko.observableArray([]);
+    self.recentMatches = ko.mapping.fromJS([]);
 
     self.updateScrollBar = function () {
         var $container = $('#recent-games');
@@ -17,9 +18,11 @@ function ViewModel() {
 
     self.getUserInfo = function (form) {
         $.get('/Stats/GetUserInfo?nickName=' + ko.toJS(form.nick), function (result) {
-            debugger;
             self.UserInfo([]);
             self.UserInfo.push(ko.mapping.fromJS(result));
+            self.recentMatches(result.RecentlyPlayedGames.map(function(match) {
+                return ko.mapping.fromJS(match);
+            }));
             bindScrollBar();
         });
     }

@@ -31,3 +31,19 @@ ko.bindingHandlers.loadingList = {
         }
     }
 };
+
+ko.bindingHandlers.kdachart = {
+    init: function(element, valueAccessor, allBindings, viewModel, bindingContext) {
+        var kda = ko.utils.unwrapObservable(valueAccessor());
+        var data = {
+            labels: ['Kills', 'Death', 'Assist'],
+            series: [
+                [kda.Kills()],
+                [kda.Deaths()],
+                [kda.Assists()]
+            ]
+        }
+
+        new Chartist.Bar($(element)[0], data);
+    }
+}
