@@ -39,15 +39,24 @@ namespace DotaBuffWrapper.Controller.Dotabuff
 
             var gistFiles = gistClient.GetGist("ebaba232180a83083cd1d9a2d7db65da");
 
-
-            dotabuffXPaths = jsonReader.ReadFromString(gistFiles.Keys.First(x=>x == jsonPaths.XPathsUri));
-
             //dotabuffXPaths = jsonReader.ReadFromFile(jsonPaths.XPathsUri);
-            dotabuffQueryStrings = jsonReader.ReadFromFile(jsonPaths.QueryStringsUri);
-            dotabuffEnums = jsonReader.ReadFromFile(jsonPaths.EnumsUri);
-            dotabuffSelectors = jsonReader.ReadFromFile(jsonPaths.SelectorsUri);
-            dotabuffHtmlAttributes = jsonReader.ReadFromFile(jsonPaths.HtmlAttributesUri);
-            dotabuffUrls = jsonReader.ReadFromFile(jsonPaths.UrlsUri);
+            dotabuffXPaths = jsonReader.ReadFromString(gistFiles["XPaths"].Content);
+            
+            
+            //dotabuffQueryStrings = jsonReader.ReadFromFile(jsonPaths.QueryStringsUri);
+            dotabuffQueryStrings = jsonReader.ReadFromString(gistFiles["QueryStrings"].Content);
+
+            //dotabuffEnums = jsonReader.ReadFromFile(jsonPaths.EnumsUri);
+            dotabuffEnums = jsonReader.ReadFromString(gistFiles["Enums"].Content);
+
+            //dotabuffSelectors = jsonReader.ReadFromFile(jsonPaths.SelectorsUri);
+            dotabuffSelectors = jsonReader.ReadFromString(gistFiles["Selectors"].Content);
+
+            //dotabuffHtmlAttributes = jsonReader.ReadFromFile(jsonPaths.HtmlAttributesUri);
+            dotabuffHtmlAttributes = jsonReader.ReadFromString(gistFiles["HtmlAttributes"].Content);
+
+            //dotabuffUrls = jsonReader.ReadFromFile(jsonPaths.UrlsUri);
+            dotabuffUrls = jsonReader.ReadFromString(gistFiles["Urls"].Content);
         }
 
         internal Dictionary<string, string> GetPlayerPathsAsDictionary()
