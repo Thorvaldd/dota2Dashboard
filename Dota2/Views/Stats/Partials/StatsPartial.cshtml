@@ -44,6 +44,9 @@
                         <th>Type</th>
                         <th>Duration</th>
                         <th>KDA</th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
                     </tr>
                     </thead>
                     <tbody data-bind="foreach: recentMatches">
@@ -62,7 +65,7 @@
                                 </div>
                             </td>
                             <td></td>
-                            <td>
+                            <td colspan="3">
                                 <div data-bind="kdachart: Kda" class="ct-chart ct-golden-section"></div>
                             </td>
                         </tr>
@@ -112,7 +115,3 @@
 
     </div>
 </script>
-
-@section styles{
-    <link href="~/Scripts/libs/materialize/plugins/chartist-js/chartist.min.css" type="text/css" rel="stylesheet"/>
-}

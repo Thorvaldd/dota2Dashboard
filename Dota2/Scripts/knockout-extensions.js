@@ -36,14 +36,14 @@ ko.bindingHandlers.kdachart = {
     init: function(element, valueAccessor, allBindings, viewModel, bindingContext) {
         var kda = ko.utils.unwrapObservable(valueAccessor());
         var data = {
-            labels: ['Kills', 'Death', 'Assist'],
+            labels: ['K', 'D', 'A'],
             series: [
-                [kda.Kills()],
-                [kda.Deaths()],
-                [kda.Assists()]
-            ]
+                [kda.Kills(), kda.Deaths(), kda.Assists()]
+            ],
+            low: 0,
+            showArea: false
         }
 
-        new Chartist.Bar($(element)[0], data);
+        new Chartist.Line($(element)[0], data);
     }
 }
