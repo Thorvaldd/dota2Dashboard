@@ -16,8 +16,9 @@
     <!-- INCLUDED CSS PLUGIN ON THIS PAGE -->
     @RenderSection("styles", required: false);
     <link href="~/Scripts/libs/materialize/plugins/chartist-js/chartist.min.css" type="text/css" rel="stylesheet" />
-    <link href="~/Scripts/libs/materialize/plugins/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" media="screen,projection" />
-  
+    <link href="~/Scripts/libs/materialize/plugins/perfect-scrollbar/perfect-scrollbar.css" rel="stylesheet" media="screen,projection"/>
+    <link href="~/Scripts/libs/materialize/plugins/sweetalert/sweetalert.css" rel="stylesheet" />
+
     <link href="~/Scripts/libs/materialize/plugins/jvectormap/jquery-jvectormap.css" type="text/css" rel="stylesheet" media="screnn,projection" />
     <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -65,9 +66,9 @@
                         <input type="text" name="Search" class="header-search-input z-depth-2" placeholder="Explore Materialize" />
                     </div>
                     <ul class="right hide-on-med-and-down">
-                        <li>
-                            <a href="javascript:void(0);" class="waves-effect waves-block waves-light translation-button" data-activates="translation-dropdown"><img src="images/flag-icons/United-States.png" alt="USA" /></a>
-                        </li>
+                        @*<li>
+                                <a href="javascript:void(0);" class="waves-effect waves-block waves-light translation-button" data-activates="translation-dropdown"><img src="images/flag-icons/United-States.png" alt="USA" /></a>
+                            </li>*@
                         <li>
                             <a href="javascript:void(0);" class="waves-effect waves-block waves-light toggle-fullscreen"><i class="mdi-action-settings-overscan"></i></a>
                         </li>
@@ -82,21 +83,21 @@
                         </li>
                     </ul>
                     <!-- translation-button -->
-                    <ul id="translation-dropdown" class="dropdown-content">
-                        <li>
-                            <a href="#!"><img src="images/flag-icons/United-States.png" alt="English" />  <span class="language-select">English</span></a>
-                        </li>
-                        <li>
-                            <a href="#!"><img src="images/flag-icons/France.png" alt="French" />  <span class="language-select">French</span></a>
-                        </li>
-                        <li>
-                            <a href="#!"><img src="images/flag-icons/China.png" alt="Chinese" />  <span class="language-select">Chinese</span></a>
-                        </li>
-                        <li>
-                            <a href="#!"><img src="images/flag-icons/Germany.png" alt="German" />  <span class="language-select">German</span></a>
-                        </li>
+                    @*<ul id="translation-dropdown" class="dropdown-content">
+                            <li>
+                                <a href="#!"><img src="images/flag-icons/United-States.png" alt="English" />  <span class="language-select">English</span></a>
+                            </li>
+                            <li>
+                                <a href="#!"><img src="images/flag-icons/France.png" alt="French" />  <span class="language-select">French</span></a>
+                            </li>
+                            <li>
+                                <a href="#!"><img src="images/flag-icons/China.png" alt="Chinese" />  <span class="language-select">Chinese</span></a>
+                            </li>
+                            <li>
+                                <a href="#!"><img src="images/flag-icons/Germany.png" alt="German" />  <span class="language-select">German</span></a>
+                            </li>
 
-                    </ul>
+                        </ul>*@
                     <!-- notifications-dropdown -->
                     <ul id="notifications-dropdown" class="dropdown-content">
                         <li>
@@ -140,7 +141,7 @@
                     <li class="user-details cyan darken-2">
                         <div class="row">
                             <div class="col col s4 m4 14">
-                                <img src="@Url.Content("~/Content/img/user.jpg")" alt="" class="circle responsive-img valign profile-image"/>
+                                <img src="@Url.Content("~/Content/img/user.jpg")" alt="" class="circle responsive-img valign profile-image" />
                             </div>
                             <div class="col col s8 m8 18">
                                 <a class="btn-flat dropdown-button waves-effect waves-light white-text profile-btn" href="#" data-activates="profile-dropdown">
@@ -304,6 +305,9 @@
 
     <!--plugins.js - Some Specific JS codes for Plugin Settings-->
     @Scripts.Render("~/Scripts/libs/materialize/plugins/plugins.js")
+
+    <!--Sweet alert-->
+    @Scripts.Render("~/Scripts/libs/materialize/plugins/sweetalert/sweetalert.min.js")
 
     <!--custom-script.js - Add your own theme custom JS-->
     @Scripts.Render("~/Scripts/common.js")

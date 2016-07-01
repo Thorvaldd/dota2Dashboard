@@ -15,7 +15,8 @@
                             <div class="input-field col s4">
                                 <div class="input-field col s12">
                                     <button class="btn cyan waves-effect waves-light" type="button" data-bind="click: $data.getUserInfo">
-                                        <i class="mdi-action-perm-identity"></i> Search
+                                        <i class="mdi-action-perm-identity" data-bind="visible:!$root.dataIsLoading()"></i> Search
+                                        <span class="glyphicon glyphicon-refresh glyphicon-refresh-animate left" data-bind="visible:$root.dataIsLoading()"></span>
                                     </button>
                                 </div>
                             </div>
@@ -34,8 +35,8 @@
             </div>
         </div>
 
-        <div class="col s12 m7 15">
-            <div class="card">
+        <div class="col s12 m7 15" data-bind="visible: recentMatches().length">
+            <div class="card" >
                 <table class="centered">
                     <thead>
                     <tr>
@@ -44,39 +45,42 @@
                         <th>Type</th>
                         <th>Duration</th>
                         <th>KDA</th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
+                      
                     </tr>
                     </thead>
-                    <tbody data-bind="foreach: recentMatches">
-                        <tr>
-                            <td >
-                                <a data-bind="attr:{href: 'http://www.dotabuff.com/matches/'+ Id()}, text: Hero.Name"></a>
-                            </td>
-                            <td data-bind="text: Mode"></td>
-                            <td>
-                                <div data-bind="if: Result() == 1">
-                                    Loose
-                                </div>
-
-                                <div data-bind="if: Result() == 2">
-                                    Win
-                                </div>
-                            </td>
-                            <td></td>
-                            <td colspan="3">
-                                <div data-bind="kdachart: Kda" class="ct-chart ct-golden-section"></div>
-                            </td>
-                        </tr>
-                    </tbody>
+                    <tbody data-bind="template: {name: 'recent-matches-template', foreach: recentMatches}"></tbody>
                 </table>
+                <div id="charts" data-bind="foreach: recentMatches">
+                    <div data-bind="kdachart: Kda" class="ct-chart ct-golden-section"></div>
+                </div>
             </div>
         </div>
     </div>
 </div>
-<script id="match-template" type="text/html">
-   
+<script id="recent-matches-template" type="text/html">
+    <tr>
+        <td>
+            <a data-bind="attr:{href: 'http://www.dotabuff.com/matches/'+ Id()}, text: Hero.Name"></a>
+        </td>
+        <td data-bind="text: Mode"></td>
+        <td>
+            <div data-bind="if: Result() == 1">
+                Loose
+            </div>
+
+            <div data-bind="if: Result() == 2">
+                Win
+            </div>
+        </td>
+        <td data-bind="text: Duration.Minutes() + ':' + Duration.Seconds()">
+
+        </td>
+        <td style="cursor: pointer">
+            <div class="icon-container" data-bind="swalChart: Kda">
+                <i class="mdi-editor-insert-chart"></i>
+            </div>
+        </td>
+    </tr>
 </script>
 <script id="model-template" type="text/html">
     <div class="card-image ">
@@ -96,20 +100,6 @@
         </span>
         <div class="row">
             <div class="col s14 m14 14">
-                @*<ul class="collection" data-bind="foreach: RecentlyPlayedGames">
-                    <li class="collection-item">
-                        <div class="row">
-                            <div class="col s4">
-                                <p class="collections-title grey-text text-darken-4" data-bind="text: Name"></p>
-                            </div>
-                            <div class="col s6">
-                                <a data-bind="click: $root.getRecentGames.bind($data, $parent)">
-                                    <img data-bind="attr: {src: ProgramLogoUrl}" style="max-width: 160px" />
-                                </a>
-                            </div>
-                        </div>
-                    </li>
-                </ul>*@
             </div>
         </div>
 

@@ -41,9 +41,23 @@ ko.bindingHandlers.kdachart = {
                 [kda.Kills(), kda.Deaths(), kda.Assists()]
             ],
             low: 0,
-            showArea: false
+            showArea: false,
+            stackBars: true,
+            axisX : {
+                labelInterPolationFnc: function(value) {
+                    return value.split(/\s+/).map(function(word) {
+                        return word[0];
+                    }).join('');
+                }
+            }
         }
 
         new Chartist.Line($(element)[0], data);
+    }
+}
+
+ko.bindingHandlers.swalChart = {
+    init: function (element, valueAccessor, allBindings, viewModel, bindingContext) {
+        var kda = ko.utils.unwrapObservable(valueAccessor());
     }
 }
