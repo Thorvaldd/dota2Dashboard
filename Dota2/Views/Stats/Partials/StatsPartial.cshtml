@@ -62,7 +62,6 @@
         <td>
             <a data-bind="attr:{href: 'http://www.dotabuff.com/matches/'+ Id()}, text: Hero.Name"></a>
         </td>
-        <td data-bind="text: Mode"></td>
         <td>
             <div data-bind="if: Result() == 1">
                 Loose
@@ -72,6 +71,7 @@
                 Win
             </div>
         </td>
+        <td data-bind="text: Mode"></td>
         <td data-bind="text: Duration.Minutes() + ':' + Duration.Seconds()">
 
         </td>

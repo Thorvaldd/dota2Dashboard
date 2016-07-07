@@ -16,14 +16,20 @@ function ViewModel() {
 
 
     }
-
+    var mappingRecentGames = {
+        'matchtime': {
+            create: function(options) {
+                return options.data;
+            }
+        }
+    }
     self.getUserInfo = function (form) {
         self.dataIsLoading(true);
         $.get('/Stats/GetUserInfo?nickName=' + ko.toJS(form.nick), function (result) {
             self.UserInfo([]);
             self.UserInfo.push(ko.mapping.fromJS(result));
             self.recentMatches(result.RecentlyPlayedGames.map(function(match) {
-                return ko.mapping.fromJS(match);
+                return ko.mapping.fromJS(match, mappingRecentGames);
             }));
             self.dataIsLoading(false);
             bindScrollBar();
