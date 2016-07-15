@@ -96,4 +96,15 @@
         transform: rotate(360deg);
     }
 }
+.my-cool-point{
+  fill-opacity: 1!important;
+  stroke-width: 0px;
+  stroke: red;
+  transition: all 0.2s linear;
+}
+.my-cool-point:hover{
+  r: 7;
+  stroke-opacity: 0.5;
+  stroke-width: 20px;
+}
 

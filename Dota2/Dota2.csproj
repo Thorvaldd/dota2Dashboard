@@ -250,6 +250,7 @@
     <Content Include="Content\img\user-bg.jpg" />
     <Content Include="Scripts\libs\materialize\plugins\chartist-js\chartist.min.css" />
     <Content Include="Scripts\libs\materialize\plugins\chartist-js\chartist.min.js" />
+    <Content Include="Scripts\libs\materialize\plugins\chartist-js\plugins\chartist-plugin-pointlabels.min.js" />
     <Content Include="Scripts\libs\materialize\plugins\chartjs\chart-script.js" />
     <Content Include="Scripts\libs\materialize\plugins\chartjs\chart.min.js" />
     <Content Include="Scripts\libs\materialize\plugins\floatThead\jquery.floatThead-slim.min.js" />
@@ -319,6 +320,8 @@
     <Content Include="Scripts\libs\materialize\plugins\plugins.min.js" />
     <Content Include="Scripts\libs\materialize\plugins\sparkline\jquery.sparkline.min.js" />
     <Content Include="Scripts\libs\materialize\plugins\sparkline\sparkline-script.js" />
+    <Content Include="Scripts\libs\materialize\plugins\sweetalert\sweetalert.css" />
+    <Content Include="Scripts\libs\materialize\plugins\sweetalert\sweetalert.min.js" />
     <Content Include="Scripts\libs\snackbar.js" />
     <Content Include="Scripts\menu.js" />
     <Content Include="Scripts\modernizr-2.6.2.js" />
