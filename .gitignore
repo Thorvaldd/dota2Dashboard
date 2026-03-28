@@ -234,3 +234,10 @@ _Pvt_Extensions
 
 # FAKE - F# Make
 .fake/
+
+# ASP.NET Core secrets and environment-specific config (never commit real credentials)
+appsettings.Development.json
+appsettings.Production.json
+appsettings.Staging.json
+appsettings.*.local.json
+secrets.json
