@@ -165,6 +165,34 @@ No CI pipeline is configured (no `.github/workflows`). Build via Visual Studio 2
 
 ---
 
+## .NET 10 Migration Plan
+
+A full migration from .NET Framework 4.5 / ASP.NET MVC 5 to .NET 10 has been planned and tracked as GitHub issues. See the **master tracking issue [#26](https://github.com/Thorvaldd/dota2Dashboard/issues/26)** for the complete phase-by-phase breakdown.
+
+### Phase summary
+| Phase | Scope | Key issues |
+|-------|-------|-----------|
+| 1 — Audit | Inventory `System.Web` usages, NuGet compat, schema, deprecate old scraper | #2 #3 #4 #5 |
+| 2 — Build | SDK-style `.csproj`, `Directory.Build.props` | #6 #7 |
+| 3 — Data | EF6 → EF Core 9, unify Newtonsoft.Json 13.x | #8 #9 |
+| 4 — DI | Unity → `Microsoft.Extensions.DependencyInjection` | #10 |
+| 5 — API wrapper | `Dota2ApiWrapper` net10.0 clean-up, CloudinaryDotNet 1.26+ | #11 #12 |
+| 6 — Scrapers | Replace EasyGitHub, ServiceStack.Text, HostingEnvironment, WebClient | #13 #14 #15 #16 |
+| 7 — MVC web | `Program.cs`, controller migration, Razor views | #17 #18 #19 #20 |
+| 8 — Config | `Web.config` → `appsettings.json` | #21 |
+| 9 — Frontend | Remove `System.Web.Optimization`, static files | #22 |
+| 10 — Console | `Dota2Import` → net10.0 | #23 |
+| 11 — CI/CD | GitHub Actions, xUnit tests | #24 #25 |
+
+### Key gotchas
+- **`DotabuffWrapper`** (lowercase b) is dead code — only `DotaBuffWrapper` (uppercase B) is active
+- **`StatsController`** has a latent DI bug: `DotaBuffParser` and `Dota2Results` were never registered — fixed in #10
+- **`DotaBuffController`** inherits Web API 2 `ApiController`, not MVC `Controller` — requires separate migration path (#19)
+- **Path separators** in `VersionController.cs` use Windows backslashes — breaks on Linux (#15)
+- All EF6 migrations are deleted in Phase 3; use `dotnet ef database update` with the new EF Core migration after
+
+---
+
 ## Development Notes
 
 - There are **two scraper libraries** (`DotabuffWrapper` and `DotaBuffWrapper`) — the capitalised `DotaBuffWrapper` is the newer refactor (version 0.1.0.3 vs 0.1.0.0). Prefer `DotaBuffWrapper` for new work.
